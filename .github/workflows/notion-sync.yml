@@ -1,0 +1,93 @@
+name: Sincronizar GitHub → Notion
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  sync-notion:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+
+      - name: Obtener versión
+        id: version
+        run: |
+          if [ -f VERSION ]; then
+            VERSION=$(cat VERSION)
+          else
+            VERSION="0.0.0"
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Actualizar Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_PAGE_ID: "3facfb48-4a8e-814c-8dab-e6b8ea62ee6e"
+          VERSION: ${{ steps.version.outputs.version }}
+          COMMIT: ${{ github.sha }}
+          REPOSITORY: "https://github.com/adriii-07/academia-del-sonido"
+          APPLICATION: "https://adriii-07.github.io/academia-del-sonido/"
+        run: |
+          SHORT_COMMIT="${COMMIT:0:7}"
+          NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          curl -X PATCH "https://api.notion.com/v1/pages/${NOTION_PAGE_ID}" \
+            -H "Authorization: Bearer ${NOTION_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -H "Notion-Version: 2022-06-28" \
+            --data "{
+              \"properties\": {
+                \"Nombre\": {
+                  \"title\": [
+                    {
+                      \"text\": {
+                        \"content\": \"Academia del Sonido\"
+                      }
+                    }
+                  ]
+                },
+                \"Versión\": {
+                  \"rich_text\": [
+                    {
+                      \"text\": {
+                        \"content\": \"${VERSION}\"
+                      }
+                    }
+                  ]
+                },
+                \"Commit\": {
+                  \"rich_text\": [
+                    {
+                      \"text\": {
+                        \"content\": \"${SHORT_COMMIT}\"
+                      }
+                    }
+                  ]
+                },
+                \"Última actualización\": {
+                  \"date\": {
+                    \"start\": \"${NOW}\"
+                  }
+                },
+                \"Aplicación\": {
+                  \"url\": \"${APPLICATION}\"
+                },
+                \"Repositorio\": {
+                  \"url\": \"${REPOSITORY}\"
+                },
+                \"Estado\": {
+                  \"select\": {
+                    \"name\": \"Sincronizado\"
+                  }
+                }
+              }
+            }"
+
+          echo "✅ Notion actualizado correctamente"
+          echo "Versión: ${VERSION}"
+          echo "Commit: ${SHORT_COMMIT}"
