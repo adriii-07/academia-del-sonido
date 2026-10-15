@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academia del sonido · Tema 1</title>
+<style>
+:root{--navy:#132b49;--navy2:#1d3d62;--blue:#3278c5;--blue-light:#eaf3ff;--bg:#f3f6fb;--card:#fff;--text:#1c2c40;--muted:#607086;--line:#dce4ee;--green:#187647;--green-bg:#e4f6eb;--red:#ad3030;--red-bg:#fff0f0;--gold:#a66b12;--shadow:0 12px 30px rgba(22,48,78,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button{font:inherit;cursor:pointer}.app{max-width:1120px;margin:0 auto;padding:22px}.hero{background:linear-gradient(125deg,var(--navy),#24578b);color:white;border-radius:22px;padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:'♪';position:absolute;font-size:180px;right:24px;top:-45px;color:#ffffff12;font-weight:800}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.77rem;color:#c3dcff;font-weight:750}.hero h1{margin:8px 0;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.1}.hero p{max-width:680px;color:#e3edf9;margin:10px 0 18px}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid #ffffff47;background:#ffffff14;border-radius:999px;padding:5px 11px;font-size:.86rem}.nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:18px 0}.nav button{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:13px;padding:12px 8px;font-weight:700;transition:.15s}.nav button span{display:block;font-size:1.1rem;margin-bottom:2px}.nav button.active{background:var(--navy);border-color:var(--navy);color:#fff}.panel{display:none}.panel.active{display:block}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);margin-bottom:16px}.card h2,.card h3{margin:0 0 10px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.feature{border:1px solid var(--line);border-radius:15px;background:#fff;padding:18px;text-align:left;color:var(--text);display:block;width:100%;transition:.15s}.feature:hover{border-color:#8cb4e4;transform:translateY(-1px)}.feature .icon{font-size:1.5rem}.feature h3{margin:7px 0 5px}.feature p{margin:0;color:var(--muted);font-size:.93rem}.btn{border:0;border-radius:11px;padding:11px 16px;font-weight:750;background:var(--blue);color:#fff}.btn:hover{filter:brightness(.95)}.btn.secondary{border:1px solid var(--line);background:#fff;color:var(--text)}.btn:disabled{opacity:.42;cursor:not-allowed}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.formula{background:#f1f6fd;border:1px solid #dce9f9;padding:22px 15px;border-radius:15px;text-align:center;margin:15px 0}.formula .math{font-size:clamp(1.45rem,3.8vw,2.1rem);font-weight:800;letter-spacing:.015em;overflow-wrap:anywhere;color:var(--navy)}.formula .label{font-size:.75rem;font-weight:800;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.progress{height:7px;border-radius:99px;background:#e7edf5;overflow:hidden;margin:12px 0}.progress>div{height:100%;background:var(--blue);transition:width .2s}.tag{display:inline-block;padding:4px 9px;border-radius:999px;background:var(--blue-light);color:#235891;font-size:.8rem;font-weight:750}.definition{padding:14px;border-radius:12px;background:#f7f9fc;margin-top:12px}.definition h3{font-size:1rem;margin:0 0 4px}.note{border-left:4px solid #d39b32;background:#fff8e8;padding:13px 15px;border-radius:9px;margin-top:14px}.options{display:grid;gap:9px;margin:14px 0}.option{display:flex;align-items:center;gap:11px;text-align:left;padding:13px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--text);width:100%}.option:hover:not(:disabled){border-color:#8cb4e4;background:#f8fbff}.option:disabled{cursor:default}.letter{width:30px;height:30px;flex:none;border-radius:9px;background:#edf2f8;display:grid;place-items:center;font-weight:800}.option.correct{border-color:#86cba1;background:var(--green-bg)}.option.wrong{border-color:#e9a0a0;background:var(--red-bg)}.feedback{border-radius:12px;padding:15px;margin-top:12px}.feedback.good{background:var(--green-bg);color:#145d37}.feedback.bad{background:var(--red-bg);color:#8f2525}.feedback.neutral{background:#f2f5f9;color:var(--text)}.feedback p{margin:6px 0 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{border:1px solid var(--line);border-radius:12px;background:#f9fbfd;padding:14px;text-align:center}.stat strong{display:block;font-size:1.5rem;color:var(--navy)}.stat span{font-size:.8rem;color:var(--muted)}.unit-table{width:100%;border-collapse:collapse;margin-top:12px}.unit-table th,.unit-table td{text-align:left;padding:11px;border-bottom:1px solid var(--line);vertical-align:top}.unit-table th{background:#f3f7fc;font-size:.85rem}.unit-table td:first-child{font-weight:750}.unit-table td:last-child{font-weight:750;color:#245b94}.select{padding:10px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--text);max-width:100%}.small{font-size:.9rem}.footer{text-align:center;padding:16px;color:var(--muted);font-size:.83rem}
+
+.formula-tools{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(180px,.8fr);gap:10px;margin:14px 0}
+.formula-tools input,.formula-tools select{width:100%;border:1px solid var(--line);border-radius:11px;padding:12px;background:var(--card);color:var(--text);font:inherit}
+.formula-catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.formula-card{border:1px solid var(--line);background:var(--card);border-radius:15px;padding:16px;min-width:0}
+.formula-card h3{margin:8px 0}
+.formula-card .formula{margin:10px 0;padding:15px 10px}
+.formula-card .math{font-size:clamp(1.1rem,2.5vw,1.5rem)}
+.formula-card p{margin:7px 0}
+.formula-card .formula-meta{font-size:.9rem;color:var(--muted)}
+body[data-theme="dark"] .formula-tools input,body[data-theme="dark"] .formula-tools select{background:var(--card);color:var(--text);border-color:var(--line)}
+.formula-chooser-note{font-size:.92rem;color:var(--muted)}
+@media(max-width:680px){.formula-tools,.formula-catalog{grid-template-columns:1fr}}
+.option span:last-child{overflow-wrap:anywhere}
+
+/* Selector de apariencia */
+.appearance-controls{position:relative;z-index:1;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.appearance-controls label{font-size:.9rem;font-weight:750;color:#e3edf9}
+.theme-select{border:1px solid #ffffff66;border-radius:10px;padding:9px 12px;background:#254d79;color:#fff;font:inherit;font-weight:700;cursor:pointer;max-width:100%;color-scheme:light}
+.theme-select:focus-visible{outline:3px solid #b8d8ff;outline-offset:2px}
+body[data-theme="dark"]{--navy:#0a1424;--navy2:#12233a;--blue:#5b9df0;--blue-light:#203853;--bg:#0d1420;--card:#151f2e;--text:#e8eef7;--muted:#a9b7c9;--line:#2b3a4f;--green:#75d29a;--green-bg:#163a2b;--red:#ff9a9a;--red-bg:#421f28;--gold:#e7bd65;--shadow:0 12px 30px rgba(0,0,0,.24);color-scheme:dark}
+body[data-theme="dark"] .hero{background:linear-gradient(125deg,#07111f,#183454)}
+body[data-theme="dark"] .nav button{background:#182437;color:var(--text);border-color:var(--line)}
+body[data-theme="dark"] .nav button.active{background:#2a5f9d;border-color:#2a5f9d;color:#fff}
+body[data-theme="dark"] .feature{background:#172437;color:var(--text)}
+body[data-theme="dark"] .feature:hover{background:#1c2d43;border-color:#5b85b5}
+body[data-theme="dark"] .btn.secondary{background:#1a283b;color:var(--text);border-color:var(--line)}
+body[data-theme="dark"] .formula{background:#1a2a40;border-color:#30455f}
+body[data-theme="dark"] .formula .math{color:#d4e6ff}
+body[data-theme="dark"] .progress{background:#263347}
+body[data-theme="dark"] .tag{background:#203954;color:#c7e2ff}
+body[data-theme="dark"] .definition{background:#1c293b}
+body[data-theme="dark"] .note{background:#352c1b;color:#f4deb1;border-left-color:#d39b32}
+body[data-theme="dark"] .option{background:#172437;color:var(--text);border-color:var(--line)}
+body[data-theme="dark"] .option:hover:not(:disabled){background:#203751;border-color:#5b85b5}
+body[data-theme="dark"] .letter{background:#2b3a4f;color:#f1f5fb}
+body[data-theme="dark"] .feedback.good{background:#163a2b;color:#a6edbd}
+body[data-theme="dark"] .feedback.bad{background:#421f28;color:#ffb9b9}
+body[data-theme="dark"] .feedback.neutral{background:#1c293b;color:var(--text)}
+body[data-theme="dark"] .stat{background:#1a283b}
+body[data-theme="dark"] .stat strong{color:#cde0fa}
+body[data-theme="dark"] .unit-table th{background:#1c293b}
+body[data-theme="dark"] .unit-table td:last-child{color:#add3ff}
+body[data-theme="dark"] .select{background:#172437;color:var(--text);border-color:var(--line);color-scheme:dark}
+body[data-theme="dark"] .theme-select{background:#14243a;color:#fff;color-scheme:dark}
+body[data-theme="dark"] .theme-select option{background:#14243a;color:#fff}
+body[data-theme="dark"] .chip{border-color:#ffffff3d;background:#ffffff0d}
+.exercise-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(250px,.85fr);gap:14px;align-items:start}
+.exercise-input-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:13px 0}
+.exercise-input{width:min(100%,280px);padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text);font:inherit}
+.exercise-input:focus-visible{outline:3px solid #8cb4e4;outline-offset:2px}
+.exercise-unit{font-weight:800;color:var(--blue)}
+.exercise-steps{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:15px;margin-top:12px;overflow-wrap:anywhere}
+.exercise-steps p{margin:7px 0}
+.exercise-mini{font-size:.89rem}
+@media(max-width:900px){.nav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.exercise-layout{grid-template-columns:1fr}}
+@media(max-width:680px){.app{padding:12px}.hero{padding:22px}.hero:after{right:-10px;top:0;font-size:110px}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.grid,.start-grid{grid-template-columns:1fr}.card{padding:16px}.stats{grid-template-columns:repeat(3,1fr)}.unit-table th,.unit-table td{padding:8px;font-size:.9rem}}
+
+.mic-type-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+.mic-pick{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:13px;padding:13px;text-align:left;min-height:84px;font-weight:750}
+.mic-pick:hover{border-color:var(--blue)}
+.mic-pick.active{background:var(--blue-light);border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+.mic-pick .mic-emoji{display:block;font-size:1.55rem;margin-bottom:4px}
+.mic-summary{border:1px solid var(--line);border-radius:17px;background:var(--card);padding:20px;margin-top:12px}
+.mic-summary h3{margin:0 0 8px}
+.mic-process{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:15px 0}
+.mic-step{background:var(--blue-light);border:1px solid var(--line);border-radius:12px;padding:13px 10px;text-align:center;min-height:108px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+.mic-step .step-icon{font-size:1.65rem}
+.mic-step strong{font-size:.91rem;line-height:1.25}
+.mic-step small{font-size:.82rem;line-height:1.3;color:var(--muted)}
+.mic-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.mic-info{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.mic-info h4{margin:0 0 6px;font-size:.98rem}.mic-info p{margin:0;font-size:.93rem}
+.mic-tip{border-left:4px solid var(--gold);background:var(--blue-light);padding:13px 15px;border-radius:9px;margin-top:12px}
+.mic-directivity-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.mic-directivity{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:15px}
+.mic-directivity h3{margin:5px 0}
+.polar-demo{height:82px;display:grid;place-items:center;background:var(--blue-light);border-radius:10px;margin-bottom:10px;color:var(--blue);font-size:2.55rem;font-weight:800;letter-spacing:.05em}
+.mic-quiz-option{display:flex;align-items:flex-start;gap:11px;width:100%;border:1px solid var(--line);border-radius:12px;padding:13px;background:var(--card);color:var(--text);text-align:left;margin:8px 0}
+.mic-quiz-option:hover:not(:disabled){border-color:var(--blue)}
+.mic-quiz-option:disabled{cursor:default}
+.mic-quiz-option.correct{border-color:var(--green);background:var(--green-bg)}
+.mic-quiz-option.wrong{border-color:var(--red);background:var(--red-bg)}
+@media(max-width:800px){.mic-type-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mic-process{grid-template-columns:repeat(2,minmax(0,1fr))}.mic-columns,.mic-directivity-grid{grid-template-columns:1fr}}
+
+/* Vídeos de apoyo dentro de las explicaciones de micrófonos */
+.mic-video-section{border-top:1px solid var(--line);margin-top:20px;padding-top:18px}
+.mic-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px;margin-top:12px}
+.mic-video-card{min-width:0;border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--card)}
+.mic-video-card h4{margin:0 0 8px;font-size:1rem;line-height:1.35}
+.mic-video-card p{font-size:.9rem;margin:8px 0 12px}
+.mic-video-card .tag{margin-bottom:6px}
+.mic-video-preview{position:relative;width:100%;aspect-ratio:16/9;display:grid;place-items:center;background:#101820;border-radius:11px;overflow:hidden;margin:10px 0}
+.mic-video-preview img{width:100%;height:100%;object-fit:cover;display:block}
+.mic-video-preview iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mic-video-play{position:absolute;z-index:2;border:1px solid #ffffff80;border-radius:999px;padding:10px 15px;background:#153e68ed;color:#fff;font-weight:800;box-shadow:0 3px 14px #0006}
+.mic-video-play:hover{background:#236db0}
+.mic-video-link{display:inline-block;color:var(--blue);font-weight:750;margin-top:8px;text-decoration:underline;text-underline-offset:3px}
+.mic-video-note{border-left:4px solid var(--blue);border-radius:9px;background:var(--blue-light);padding:12px 14px;margin-top:12px;font-size:.9rem}
+
+
+/* Refuerzo de legibilidad para el modo oscuro en todos los módulos. */
+body[data-theme="dark"] .card,
+body[data-theme="dark"] .formula-card,
+body[data-theme="dark"] .mic-summary,
+body[data-theme="dark"] .mic-info,
+body[data-theme="dark"] .mic-video-card,
+body[data-theme="dark"] .mic-directivity,
+body[data-theme="dark"] .exercise-steps {
+  background-color: var(--card);
+  color: var(--text);
+  border-color: var(--line);
+}
+body[data-theme="dark"] .definition,
+body[data-theme="dark"] .feedback.neutral,
+body[data-theme="dark"] .stat,
+body[data-theme="dark"] .mic-step,
+body[data-theme="dark"] .mic-tip,
+body[data-theme="dark"] .polar-demo,
+body[data-theme="dark"] .mic-video-note {
+  color: var(--text);
+}
+body[data-theme="dark"] .mic-pick {background:var(--card);color:var(--text);border-color:var(--line)}
+body[data-theme="dark"] .mic-pick.active {background:var(--blue-light);border-color:var(--blue)}
+body[data-theme="dark"] .mic-video-card a,
+body[data-theme="dark"] a {color:#91c4ff}
+body[data-theme="dark"] .unit-table th {color:var(--text);border-color:var(--line)}
+body[data-theme="dark"] .unit-table td {color:var(--text);border-color:var(--line)}
+body[data-theme="dark"] .unit-table td:last-child {color:#add3ff}
+body[data-theme="dark"] input::placeholder {color:#a9b7c9}
+body[data-theme="dark"] .formula-tools input,
+body[data-theme="dark"] .formula-tools select,
+body[data-theme="dark"] .exercise-input,
+body[data-theme="dark"] .select {background:var(--card);color:var(--text);border-color:var(--line);color-scheme:dark}
+body[data-theme="dark"] .theme-select {background:#14243a;color:#fff;color-scheme:dark}
+body[data-theme="dark"] .nav button:not(.active) {background:#182437;color:var(--text);border-color:var(--line)}
+body[data-theme="dark"] .btn.secondary {background:#1a283b;color:var(--text);border-color:var(--line)}
+body[data-theme="dark"] .feature {background:#172437;color:var(--text);border-color:var(--line)}
+body[data-theme="dark"] .feature p {color:var(--muted)}
+body[data-theme="dark"] .mic-video-preview {background:#080e17}
+body[data-theme="dark"] hr {border-color:var(--line)}
+
+
+.exercise-formula-stage{margin-top:16px}
+#exercise-formula-options .option span:last-child{font-size:1.04rem;font-weight:650}
+#exercise-formula-feedback{margin-top:10px}
+#exercise-formula-hint-box{margin-top:12px}
+#exercise-calc-stage{margin-top:16px}
+#exercise-calc-stage[hidden],#exercise-formula-stage[hidden]{display:none!important}
+body[data-theme="dark"] #exercise-formula-stage{background:#1c293b;border-color:var(--line)}
+
+
+.mic-formula-priority{border:1px solid var(--blue);border-left:5px solid var(--blue);border-radius:14px;background:var(--blue-light);padding:17px;margin:14px 0 18px;color:var(--text)}
+.mic-formula-priority .priority-label{display:inline-block;font-size:.76rem;font-weight:850;text-transform:uppercase;letter-spacing:.07em;color:var(--blue);margin-bottom:6px}
+.mic-formula-priority .priority-formula{font-size:clamp(1.15rem,3vw,1.7rem);font-weight:850;overflow-wrap:anywhere;margin:10px 0;color:var(--text)}
+.mic-formula-priority p{margin:7px 0}
+body[data-theme="dark"] .mic-formula-priority{background:#172a42;border-color:#75adf5;color:var(--text)}
+body[data-theme="dark"] .mic-formula-priority .priority-label{color:#a9ceff}
+body[data-theme="dark"] .mic-formula-priority .priority-formula{color:#f0f5ff}
+
+</style></head>
+<body><main class="app">
+<header class="hero"><div class="eyebrow">2.º STI · Sistemas de Producción Audiovisual</div><h1>Academia del sonido</h1><p>Aprende las fórmulas de El sonido y Micrófonos, domina los despejes y resuelve los ejercicios de repaso del profesor.</p><div class="chips"><span class="chip">Formulario completo</span><span class="chip">Despejes inversos</span><span class="chip">22 retos para elegir fórmula</span><span class="chip">28 ejercicios numéricos</span><span class="chip">Repaso offline · vídeos con internet</span></div><div class="appearance-controls"><label for="theme-select">Apariencia</label><select id="theme-select" class="theme-select" aria-label="Elegir tema de la aplicación"><option value="light">☀️ Tema claro</option><option value="dark">🌙 Tema oscuro</option></select></div></header>
+<script>
+/* Selector de tema independiente del resto de la aplicación. */
+(function () {
+  const select = document.getElementById('theme-select');
+  if (!select) return;
+  const key = 'academia-sonido-theme';
+  function applyTheme(theme) {
+    const selected = theme === 'dark' ? 'dark' : 'light';
+    document.body.setAttribute('data-theme', selected);
+    document.documentElement.style.colorScheme = selected;
+    select.value = selected;
+    select.setAttribute('aria-label', selected === 'dark' ? 'Tema oscuro seleccionado' : 'Tema claro seleccionado');
+    try { window.localStorage.setItem(key, selected); } catch (e) { /* La apariencia sigue cambiando aunque no se pueda guardar. */ }
+  }
+  let saved = 'light';
+  try { saved = window.localStorage.getItem(key) || 'light'; } catch (e) { /* Tema claro por defecto. */ }
+  select.addEventListener('change', function () { applyTheme(select.value); });
+  applyTheme(saved);
+})();
+</script>
+<nav class="nav" aria-label="Apartados"><button class="active" data-view="inicio"><span>⌂</span>Inicio</button><button data-view="formulario"><span>Σ</span>Formulario</button><button data-view="elegir-formula"><span>🧩</span>Elegir fórmula</button><button data-view="aprender"><span>▤</span>Aprender</button><button data-view="practicar"><span>✎</span>Practicar</button><button data-view="unidades"><span>↔</span>Unidades</button><button data-view="examen"><span>✓</span>Reto de examen</button><button data-view="ejercicios"><span>∑</span>Ejercicios</button><button data-view="microfonos"><span>🎙️</span>Tipos de micros</button></nav>
+<section id="inicio" class="panel active"><div class="card"><h2>Tu plan de estudio</h2><p class="muted">La forma más eficaz de prepararte es aprender qué significa cada símbolo, memorizar las unidades y después reconocer la fórmula adecuada a partir de un enunciado.</p><div class="start-grid"><button class="feature" data-goto="formulario"><div class="icon">📚</div><h3>1. Formulario completo</h3><p>Todas las fórmulas juntas, ordenadas por tema, con unidades, variables y despejes.</p></button><button class="feature" data-goto="elegir-formula"><div class="icon">🧩</div><h3>2. Elegir la fórmula</h3><p>Lee el enunciado y selecciona la ecuación que usarías antes de hacer las cuentas.</p></button><button class="feature" data-goto="aprender"><div class="icon">📘</div><h3>3. Aprender</h3><p>Revisa las 18 fórmulas con explicación, variables, unidades y una pista para reconocerlas.</p></button><button class="feature" data-goto="practicar"><div class="icon">🧠</div><h3>4. Practicar</h3><p>Ve una fórmula y elige qué magnitud calcula. Recibe explicación inmediata.</p></button><button class="feature" data-goto="unidades"><div class="icon">📏</div><h3>5. Unidades</h3><p>Consulta la chuleta completa y comprueba si distingues las unidades correctas.</p></button><button class="feature" data-goto="examen"><div class="icon">📝</div><h3>6. Reto de examen</h3><p>Lee una situación y escoge la fórmula apropiada, sin que el nombre te lo dé hecho.</p></button><button class="feature" data-goto="ejercicios"><div class="icon">🧮</div><h3>7. Ejercicios numéricos</h3><p>Lee primero el enunciado, elige la fórmula entre varias opciones y después resuelve la operación.</p></button><button class="feature" data-goto="microfonos"><div class="icon">🎙️</div><h3>8. Tipos de micrófonos</h3><p>Aprende cómo funciona cada transductor con pasos visuales y termina con un test.</p></button></div></div><div class="card mic-formula-priority"><span class="priority-label">⭐ Fórmula señalada por el profesor · Micrófonos</span><h2>Sensibilidad del micrófono en decibelios</h2><div class="priority-formula">S(dB) = 20 · log₁₀(S / (1 V/Pa))</div><p><strong>Qué calcula:</strong> expresa la sensibilidad del micrófono en dB tomando como referencia 1 V/Pa.</p><p><strong>Clave de examen:</strong> si te dan S en mV/Pa, conviértela a V/Pa antes de sustituirla. Por ejemplo, 20 mV/Pa = 0,020 V/Pa.</p><p class="small">Esta fórmula aparece en la diapositiva 3 de «Micrófonos», en el apartado de características técnicas.</p><button class="btn secondary" data-goto="formulario">Ver en el formulario</button> <button class="btn" data-goto="ejercicios">Practicar la fórmula</button></div><div class="card"><h2>Regla de oro: no confundas la magnitud con su nivel</h2><div class="grid"><div class="definition"><h3>Magnitud física</h3><strong>Presión: Pa</strong><br><strong>Intensidad: W/m²</strong><br><strong>Potencia: W</strong></div><div class="definition"><h3>Nivel acústico</h3><strong>SPL: dB</strong><br><strong>SIL: dB</strong><br><strong>PWL: dB</strong></div></div></div></section>
+<section id="formulario" class="panel">
+<div class="card">
+  <div class="row"><div><h2>Formulario completo</h2><p class="muted small">Todas las fórmulas del material de El sonido y Micrófonos, agrupadas por tema. Usa esta pantalla como hoja de consulta mientras practicas.</p></div><span class="tag" id="formula-library-count">22 fórmulas</span></div>
+  <div class="mic-formula-priority"><span class="priority-label">⭐ Prioridad de repaso · Micrófonos</span><h3>Sensibilidad del micrófono en decibelios</h3><div class="priority-formula">S(dB) = 20 · log₁₀(S / (1 V/Pa))</div><p><strong>Referencia:</strong> Sref = 1 V/Pa.</p><p><strong>Antes de calcular:</strong> expresa S también en V/Pa. Para convertir de mV/Pa a V/Pa, divide entre 1000.</p><p class="small">Ejemplo de conversión: 20 mV/Pa = 0,020 V/Pa. La respuesta final se expresa en dB.</p><button class="btn secondary" data-goto="ejercicios">Ir a los ejercicios de sensibilidad</button></div>
+  <div class="formula-tools"><label><span class="muted small">Buscar por nombre, símbolo o uso</span><input id="formula-search" type="search" placeholder="Ej. SPL, longitud de onda, presión…" autocomplete="off"></label><label><span class="muted small">Filtrar por tema</span><select id="formula-filter"><option value="all">Todos los temas</option></select></label></div>
+  <div id="formula-catalog" class="formula-catalog"></div>
+  <div id="formula-empty" class="note" hidden>No hay fórmulas que coincidan con esa búsqueda. Prueba otro término o cambia el filtro.</div>
+  <div class="note"><strong>Nota sobre los despejes:</strong> los despejes inversos de PWL, SPL, SIL y frecuencia-período se incluyen para practicar la operación contraria. Las diapositivas presentan explícitamente las fórmulas directas; los despejes se obtienen algebraicamente.</div>
+</div>
+</section>
+
+<section id="elegir-formula" class="panel">
+<div class="card">
+  <div class="row"><div><h2>Entrenamiento: ¿qué fórmula usarías?</h2><p class="muted small">Esta es la práctica principal para el examen. Lee lo que te dan y lo que te piden, y selecciona la ecuación adecuada. No tienes que calcular todavía.</p></div><span class="tag" id="pick-count">Pregunta 1 / 22</span></div>
+  <div class="progress"><div id="pick-progress" style="width:4.5%"></div></div>
+  <div class="definition"><span class="tag" id="pick-topic">Niveles acústicos</span><h3 id="pick-prompt" style="font-size:1.1rem;margin-top:9px"></h3><p class="formula-chooser-note" id="pick-given"></p></div>
+  <p><strong>Elige la fórmula que utilizarías:</strong></p>
+  <div id="pick-options" class="options"></div>
+  <div id="pick-feedback" aria-live="polite"></div>
+  <div class="actions"><button class="btn secondary" id="pick-reveal">Ver solución</button><button class="btn" id="pick-next" disabled>Siguiente →</button><button class="btn secondary" id="pick-restart" hidden>Repetir entrenamiento</button></div>
+</div>
+<div class="card"><h3>Consejo para decidir</h3><p>Antes de elegir una fórmula, localiza tres cosas: <strong>qué datos te dan</strong>, <strong>qué magnitud te piden</strong> y <strong>en qué unidades están los datos</strong>. Si te dan dB y te piden W o Pa, probablemente necesites un despeje inverso. Si te dan W o Pa y te piden dB, usa la fórmula directa correspondiente.</p><button class="btn secondary" data-goto="formulario">Abrir el formulario completo</button></div>
+</section>
+
+<section id="aprender" class="panel"><div class="card"><div class="row"><div><h2>Aprender las fórmulas</h2><p class="muted small">Lee la fórmula y trata de explicarla con tus propias palabras.</p></div><span class="tag" id="learn-count">1 / 17</span></div><label for="learn-select" class="small muted">Ir directamente a una fórmula</label><br><select class="select" id="learn-select"></select><div class="progress"><div id="learn-progress" style="width:5.9%"></div></div><span class="tag" id="learn-group">Magnitudes de la onda</span><div class="formula"><div class="label">Fórmula</div><div class="math" id="learn-formula"></div><h2 id="learn-name"></h2></div><div class="definition"><h3>¿Qué calcula?</h3><div id="learn-meaning"></div></div><div class="definition"><h3>¿Qué significa cada valor?</h3><div id="learn-vars"></div></div><div class="definition"><h3>Unidades</h3><div id="learn-units"></div></div><div class="definition"><h3>Cómo reconocerla</h3><div id="learn-clue"></div></div><div id="learn-note"></div><div class="actions"><button class="btn secondary" id="learn-prev">← Anterior</button><button class="btn" id="learn-next">Siguiente →</button><button class="btn secondary" id="learn-practice">Practicar esta fórmula</button></div></div></section>
+<section id="practicar" class="panel"><div class="card"><div class="row"><div><h2>Practicar: reconoce la fórmula</h2><p class="muted small">En esta sección se muestra la fórmula, no el nombre.</p></div><span class="tag" id="practice-count">Pregunta 1 / 17</span></div><div class="progress"><div id="practice-progress" style="width:5.9%"></div></div><div class="formula"><div class="label">¿Qué representa?</div><div class="math" id="practice-formula"></div></div><div class="options" id="practice-options"></div><div id="practice-feedback"></div><div class="actions"><button class="btn secondary" id="practice-reveal">Ver solución</button><button class="btn" id="practice-next" disabled>Siguiente →</button><button class="btn secondary" id="practice-restart" hidden>Repetir test</button></div></div></section>
+<section id="unidades" class="panel"><div class="card"><h2>Chuleta de unidades</h2><p class="muted">Las unidades de los niveles acústicos son decibelios, pero las magnitudes físicas que aparecen dentro de sus fórmulas llevan unidades diferentes.</p><div style="overflow-x:auto"><table class="unit-table"><thead><tr><th>Símbolo</th><th>Qué representa</th><th>Unidad</th></tr></thead><tbody id="unit-table-body"></tbody></table></div><div class="note"><strong>Ojo:</strong> <b>Pa</b> es presión, <b>W/m²</b> es intensidad, <b>W</b> es potencia y <b>dB</b> es nivel acústico. No son intercambiables.</div><div class="note"><strong>Micrófonos:</strong> la sensibilidad se suele especificar en mV/Pa. Para utilizar la fórmula tal como aparece en la página 3 del PDF, con referencia 1 V/Pa, convierte S a V/Pa antes de calcular el logaritmo.</div></div><div class="card"><div class="row"><div><h2>Test de unidades</h2><p class="muted small">Escoge la unidad adecuada para cada magnitud.</p></div><span class="tag" id="unit-count">Pregunta 1 / 16</span></div><div class="progress"><div id="unit-progress" style="width:7.1%"></div></div><h3 id="unit-question"></h3><div class="options" id="unit-options"></div><div id="unit-feedback"></div><div class="actions"><button class="btn secondary" id="unit-reveal">Ver solución</button><button class="btn" id="unit-next" disabled>Siguiente →</button><button class="btn secondary" id="unit-restart" hidden>Repetir test</button></div></div></section>
+<section id="examen" class="panel"><div class="card"><div class="row"><div><h2>Reto de examen</h2><p class="muted small">Lee qué te pide el ejercicio y elige la fórmula que utilizarías.</p></div><span class="tag" id="exam-count">Pregunta 1 / 13</span></div><div class="progress"><div id="exam-progress" style="width:8.3%"></div></div><div class="definition" style="font-size:1.08rem" id="exam-question"></div><div class="options" id="exam-options"></div><div id="exam-feedback"></div><div class="actions"><button class="btn secondary" id="exam-reveal">Ver solución</button><button class="btn" id="exam-next" disabled>Siguiente →</button><button class="btn secondary" id="exam-restart" hidden>Repetir reto</button></div></div></section>
+<section id="ejercicios" class="panel">
+<div class="card">
+  <div class="row"><div><h2>Ejercicios numéricos: elige y aplica la fórmula</h2><p class="muted small">Cada ejercicio tiene dos fases. Primero lee el enunciado y elige una fórmula entre varias opciones. Solo cuando aciertes se desbloqueará el cálculo numérico.</p></div><span class="tag">28 ejercicios</span></div>
+  <div class="definition"><h3>Cómo funciona</h3><p><strong>1.</strong> Lee el enunciado y decide qué magnitud te piden.</p><p><strong>2.</strong> Selecciona una de las fórmulas propuestas. Si fallas, podrás volver a intentarlo.</p><p><strong>3.</strong> Cuando elijas la correcta, introduce el resultado y consulta la resolución paso a paso si la necesitas.</p></div>
+  <div class="note"><strong>Consejo:</strong> si necesitas repasar, abre el apartado <b>Formulario</b> desde el menú. Aquí la fórmula no se muestra hasta que la elijas correctamente o pulses «Mostrar fórmula».</div>
+</div>
+<div class="card">
+  <div class="row"><div><h2 id="exercise-heading">Ejercicio 1</h2><p class="muted small" id="exercise-block">Bloque 1 · Cálculo de nivel de potencia sonora</p></div><span class="tag" id="exercise-count">Ejercicio 1 / 25</span></div>
+  <div class="progress"><div id="exercise-progress" style="width:4%"></div></div>
+  <h3 id="exercise-prompt"></h3>
+
+  <div id="exercise-formula-stage" class="definition">
+    <h3>Paso 1 · Elige la fórmula adecuada</h3>
+    <p class="muted small">No hagas todavía las operaciones. Elige la ecuación que utilizarías para resolver el enunciado.</p>
+    <div id="exercise-formula-options" class="options"></div>
+    <div id="exercise-formula-feedback" aria-live="polite"></div>
+    <div class="actions">
+      <button class="btn secondary" id="exercise-formula-hint">Dame una pista</button>
+      <button class="btn secondary" id="exercise-formula-reveal">Mostrar fórmula correcta</button>
+    </div>
+    <div id="exercise-formula-hint-box" class="feedback neutral" hidden></div>
+  </div>
+
+  <div id="exercise-calc-stage" hidden>
+    <div id="exercise-calc-message" aria-live="polite"></div>
+    <div class="formula"><div class="label">Paso 2 · Utiliza la fórmula elegida</div><div class="math" id="exercise-formula"></div><p class="muted small" id="exercise-given"></p></div>
+    <label for="exercise-answer"><strong>Tu resultado</strong> <span class="muted small">(escribe solo el número; puedes usar coma decimal o notación científica)</span></label>
+    <div class="exercise-input-row"><input id="exercise-answer" class="exercise-input" type="text" inputmode="decimal" autocomplete="off" placeholder="Ej. 107" aria-label="Introduce tu resultado numérico"><span class="exercise-unit" id="exercise-unit">dB</span></div>
+    <div id="exercise-feedback" aria-live="polite"></div>
+    <div class="exercise-steps" id="exercise-steps" hidden></div>
+    <div class="actions"><button class="btn" id="exercise-check">Comprobar respuesta</button><button class="btn secondary" id="exercise-reveal">Ver solución paso a paso</button><button class="btn" id="exercise-next" disabled>Siguiente →</button><button class="btn secondary" id="exercise-restart" hidden>Repetir los ejercicios</button></div>
+  </div>
+  <p class="muted exercise-mini">Los primeros ejercicios se basan en la ficha del profesor y los siguientes amplían las fórmulas del tema. Se aceptan pequeñas diferencias por redondeo.</p>
+</div>
+</section>
+
+<section id="microfonos" class="panel">
+<div class="card">
+<div class="row"><div><h2>Aprende cómo funciona cada tipo de micrófono</h2><p class="muted small">Basado en las diapositivas 12–20 del tema Micrófonos. Elige un tipo para ver cómo convierte el sonido en señal eléctrica.</p></div><span class="tag">6 tipos de transductor</span></div>
+<div class="mic-tip"><strong>La idea clave:</strong> todos captan una onda sonora y la convierten en una señal eléctrica. Lo que cambia es <em>cómo</em> hacen esa conversión. La directividad es otra clasificación: indica desde qué dirección capta mejor el micrófono.</div>
+<div id="mic-type-buttons" class="mic-type-grid" aria-label="Elegir tipo de micrófono"></div>
+<div id="mic-type-content" class="mic-summary" aria-live="polite"></div>
+</div>
+<div class="card">
+<h2>No confundas el transductor con la directividad</h2><p class="muted">El transductor explica cómo se convierte el sonido en señal eléctrica. La directividad explica desde dónde capta el sonido.</p>
+<div class="mic-directivity-grid">
+<div class="mic-directivity"><div class="polar-demo">◉</div><h3>Omnidireccional</h3><p>Capta el sonido de manera uniforme en todas las direcciones.</p></div>
+<div class="mic-directivity"><div class="polar-demo">∞</div><h3>Bidireccional</h3><p>Es más sensible por delante y por detrás, y menos por los laterales.</p></div>
+<div class="mic-directivity"><div class="polar-demo">➤</div><h3>Unidireccional</h3><p>Capta especialmente desde una dirección y atenúa los sonidos que llegan por detrás.</p></div>
+<div class="mic-directivity"><div class="polar-demo">♥</div><h3>Cardioide</h3><p>Tiene un diagrama en forma de corazón. Las diapositivas lo describen como poco sensible por la parte trasera.</p></div>
+<div class="mic-directivity"><div class="polar-demo">◖➤◗</div><h3>Hipercardioide</h3><p>Es poco sensible a los laterales. El tema lo relaciona con recintos con mucha reverberación.</p></div>
+<div class="mic-directivity"><div class="polar-demo">◔</div><h3>Supercardioide</h3><p>Según las diapositivas, está entre la bidireccional y la cardioide y es muy sensible en el eje principal.</p></div>
+</div>
+<div class="mic-video-section"><h3>🎬 Vídeo de apoyo: directividad y patrones polares</h3><p class="muted small">En este vídeo general, salta aproximadamente al minuto 3:34 para ver la parte sobre el patrón polar. Te ayuda a diferenciar cómo capta el sonido cada forma de directividad.</p><a class="btn" href="https://www.youtube.com/watch?v=lRdo_Y6vqIQ&t=214s" target="_blank" rel="noopener noreferrer">Ver patrones polares en YouTube ↗</a></div>
+<div class="mic-tip"><strong>Truco de examen:</strong> dinámico, cinta, condensador, electret, piezoeléctrico y carbón son tipos según el transductor. Omni, bidireccional, cardioide, hipercardioide y supercardioide describen la directividad.</div>
+</div>
+<div class="card">
+<div class="row"><div><h2>Comprueba si lo has entendido</h2><p class="muted small">Identifica el micrófono a partir de su funcionamiento, características o uso.</p></div><span class="tag" id="mic-quiz-count">Pregunta 1 / 12</span></div>
+<div class="progress"><div id="mic-quiz-progress" style="width:8.3%"></div></div>
+<h3 id="mic-quiz-question"></h3><div id="mic-quiz-options"></div><div id="mic-quiz-feedback"></div>
+<div class="actions"><button class="btn secondary" id="mic-quiz-reveal">Ver solución</button><button class="btn" id="mic-quiz-next" disabled>Siguiente →</button><button class="btn secondary" id="mic-quiz-restart" hidden>Repetir test</button></div>
+</div>
+</section>
+
+<div class="footer">Academia del sonido · Tema 1: El sonido + Tema 1b: Micrófonos · Material de práctica basado en las diapositivas proporcionadas.</div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const formulas=[
+{f:'f = 1 / T',name:'Frecuencia',group:'Magnitudes de la onda',meaning:'Calcula la frecuencia de una onda a partir de su período.',vars:'f = frecuencia de la onda; T = período de la onda.',units:'f en hercios (Hz). T en segundos (s).',clue:'La frecuencia es el número de ciclos por segundo y el período es el tiempo que dura un ciclo.',opts:['Frecuencia de la onda','Período de la onda','Longitud de onda','Ancho de banda']},
+{f:'fₙ = n · f₀',name:'Frecuencia de los armónicos',group:'Magnitudes de la onda',meaning:'Calcula la frecuencia de un armónico a partir de la frecuencia fundamental.',vars:'fₙ = frecuencia del armónico; n = número de armónico; f₀ = frecuencia fundamental.',units:'fₙ y f₀ en Hz. n es un número sin unidades.',clue:'Un armónico tiene una frecuencia que es múltiplo de la fundamental.',opts:['Frecuencia de un armónico','Frecuencia central','Nivel sonoro total','Período de la onda']},
+{f:'BW = fₛ − fᵢ',name:'Ancho de banda',group:'Bandas de frecuencia',meaning:'Calcula la diferencia entre la frecuencia superior y la inferior de una banda.',vars:'BW = ancho de banda; fₛ = frecuencia superior; fᵢ = frecuencia inferior.',units:'Todas las frecuencias se expresan en Hz.',clue:'Resta los dos extremos de una banda de frecuencias.',opts:['Ancho de banda','Frecuencia central','Banda de octava','Longitud de onda']},
+{f:'f꜀ = √(fₛ · fᵢ)',name:'Frecuencia central',group:'Bandas de frecuencia',meaning:'Calcula la frecuencia central de una banda mediante la media geométrica.',vars:'f꜀ = frecuencia central; fₛ = frecuencia superior; fᵢ = frecuencia inferior.',units:'Todas las frecuencias se expresan en Hz.',clue:'Aparece la raíz cuadrada del producto de dos frecuencias.',opts:['Frecuencia central','Ancho de banda','Frecuencia fundamental','Frecuencia de un armónico']},
+{f:'fₛ = 2 · fᵢ',name:'Banda de octava',group:'Bandas de frecuencia',meaning:'Expresa la relación entre las frecuencias superior e inferior de una banda de octava.',vars:'fₛ = frecuencia superior; fᵢ = frecuencia inferior.',units:'Ambas frecuencias se expresan en Hz.',clue:'La frecuencia superior es el doble de la inferior.',opts:['Banda de octava','Banda de tercio de octava','Ancho de banda','Frecuencia central']},
+{f:'fₛ = fᵢ · 2^(1/3)',name:'Banda de tercio de octava',group:'Bandas de frecuencia',meaning:'Expresa la relación entre los extremos de una banda de tercio de octava.',vars:'fₛ = frecuencia superior; fᵢ = frecuencia inferior.',units:'Ambas frecuencias en Hz. El factor 2^(1/3) no tiene unidades.',clue:'Fíjate en el exponente 1/3.',opts:['Banda de tercio de octava','Banda de octava','Frecuencia central','Ancho de banda']},
+{f:'PWL = 10 · log₁₀(W / W₀)',name:'Nivel de potencia sonora',group:'Niveles acústicos',meaning:'Expresa la potencia sonora como un nivel relativo a una potencia de referencia.',vars:'PWL = nivel de potencia sonora; W = potencia sonora; W₀ = potencia de referencia, indicada en el tema como 10⁻¹² W.',units:'W y W₀ en vatios (W). PWL en decibelios (dB).',clue:'La variable dentro de la fracción es W, de potencia.',opts:['Nivel de potencia sonora (PWL)','Nivel de intensidad sonora (SIL)','Nivel de presión sonora (SPL)','Ancho de banda']},
+{f:'SIL = 10 · log₁₀(I / I₀)',name:'Nivel de intensidad sonora',group:'Niveles acústicos',meaning:'Calcula el nivel de intensidad sonora a partir de una intensidad y su referencia.',vars:'SIL = nivel de intensidad sonora; I = intensidad medida; I₀ = intensidad de referencia.',units:'I e I₀ en W/m². SIL en dB.',clue:'La letra I corresponde a intensidad sonora.',opts:['Nivel de intensidad sonora (SIL)','Nivel de presión sonora (SPL)','Nivel de potencia sonora (PWL)','Intensidad en vatios']},
+{f:'SPL = 20 · log₁₀(P / P₀)',name:'Nivel de presión sonora',group:'Niveles acústicos',meaning:'Calcula el nivel de presión sonora, usado para expresar una medición de sonómetro.',vars:'SPL = nivel de presión sonora; P = presión sonora; P₀ = presión de referencia, 2 · 10⁻⁵ Pa.',units:'P y P₀ en pascales (Pa). SPL en dB.',clue:'Utiliza presión sonora y multiplica el logaritmo por 20.',opts:['Nivel de presión sonora (SPL)','Nivel de potencia sonora (PWL)','Nivel de intensidad sonora (SIL)','Potencia sonora']},
+{f:'Ltotal = 10 · log₁₀(10^(L₁/10) + 10^(L₂/10))',name:'Suma de dos fuentes no coherentes',group:'Niveles acústicos',meaning:'Obtiene el nivel total producido por dos fuentes sonoras no coherentes.',vars:'Ltotal = nivel total; L₁ y L₂ = niveles individuales de las dos fuentes.',units:'Ltotal, L₁ y L₂ en dB.',clue:'Hay dos niveles dentro de una suma de potencias de diez.',opts:['Nivel total de dos fuentes no coherentes','Nivel de una sola fuente','Nivel de potencia sonora','Suma aritmética de niveles en dB']},
+{f:'Ltotal = 10 · log₁₀(N) + Lp',name:'Suma de N fuentes iguales',group:'Niveles acústicos',meaning:'Calcula el nivel total de N fuentes no coherentes de igual potencia y a la misma distancia.',vars:'N = número de fuentes; Lp = nivel individual; Ltotal = nivel total.',units:'N no tiene unidades. Lp y Ltotal en dB.',clue:'N representa el número de fuentes y Lp el nivel de una fuente.',opts:['Nivel total de N fuentes iguales','Nivel total de dos fuentes diferentes','Nivel de presión sonora','Potencia sonora']},
+{f:'c = c₀ · √(1 + T/273)',name:'Velocidad del sonido y temperatura (raíz)',group:'Propagación del sonido',meaning:'Relaciona la velocidad del sonido con la temperatura del medio, según la expresión del tema.',vars:'c = velocidad del sonido; c₀ = velocidad de referencia; T = temperatura.',units:'c y c₀ en m/s; T en °C según la expresión presentada en el tema.',clue:'Contiene c₀ y una raíz con la temperatura.',opts:['Velocidad del sonido según la temperatura','Longitud de onda','Velocidad a partir del tiempo y espacio','Frecuencia']},
+{f:'c = 331,4 + 0,6 · T',name:'Velocidad del sonido (aproximada)',group:'Propagación del sonido',meaning:'Calcula la velocidad aproximada del sonido en función de la temperatura.',vars:'c = velocidad del sonido; T = temperatura.',units:'c en m/s; T en °C.',clue:'Es la expresión lineal alternativa que aparece en el tema.',opts:['Velocidad aproximada del sonido según la temperatura','Longitud de onda','Velocidad de una fuente','Ancho de banda']},
+{f:'λ = c / f',name:'Longitud de onda',group:'Propagación del sonido',meaning:'Calcula la longitud de onda a partir de la velocidad de propagación y la frecuencia.',vars:'λ = longitud de onda; c = velocidad de propagación; f = frecuencia.',units:'λ en m; c en m/s; f en Hz.',clue:'Relaciona velocidad de propagación y frecuencia.',opts:['Longitud de onda','Frecuencia','Ancho de banda','Período']},
+{f:'Ei = Er + Ea + Et',name:'Reparto de la energía acústica',group:'Propagación del sonido',meaning:'Representa cómo se reparte la energía incidente entre la reflejada, la absorbida y la transmitida.',vars:'Ei = energía incidente; Er = energía reflejada; Ea = energía absorbida; Et = energía transmitida.',units:'Todas las energías deben expresarse en la misma unidad. La diapositiva no concreta cuál.',clue:'La energía incidente se reparte en tres tipos de energía.',opts:['Reparto de la energía incidente','Suma de niveles acústicos','Cálculo de la longitud de onda','Velocidad del sonido']},
+{f:'c = e / t',name:'Velocidad a partir de espacio y tiempo',group:'Eco',meaning:'Calcula la velocidad dividiendo el espacio recorrido entre el tiempo empleado.',vars:'c = velocidad; e = espacio recorrido; t = tiempo empleado.',units:'c en m/s; e en m; t en s.',clue:'Es la relación entre espacio recorrido y tiempo empleado.',opts:['Velocidad a partir del espacio y el tiempo','Distancia de ida y vuelta','Longitud de onda','Nivel sonoro']},
+{f:'e = 2 · d',name:'Recorrido total del eco',group:'Eco',meaning:'Calcula el recorrido completo de una onda que llega a un obstáculo y vuelve al receptor.',vars:'e = espacio recorrido total; d = distancia hasta la superficie reflectante.',units:'e y d en metros (m).',clue:'La onda recorre el camino de ida y también el de vuelta.',opts:['Distancia total recorrida en el eco','Distancia de ida solamente','Velocidad del sonido','Tiempo empleado']},
+{f:'S(dB) = 20 · log₁₀(S / Sref) = 20 · log₁₀(S / (1 V/Pa))',name:'Sensibilidad del micrófono en decibelios',group:'Características técnicas del micrófono',meaning:'Expresa la sensibilidad de un micrófono en decibelios tomando como referencia 1 V/Pa, tal como aparece en la diapositiva de micrófonos (página 3).',vars:'S(dB) = sensibilidad expresada en decibelios; S = sensibilidad del micrófono; Sref = sensibilidad de referencia, 1 V/Pa.',units:'Para usar Sref = 1 V/Pa, expresa S también en V/Pa. Si el dato está en mV/Pa, conviértelo primero (1000 mV/Pa = 1 V/Pa). El resultado S(dB) se expresa en dB.',clue:'La fórmula de sensibilidad del micrófono utiliza 20 · log₁₀ y compara S con una referencia de 1 V/Pa.',opts:['Sensibilidad del micrófono en decibelios','Nivel de presión sonora (SPL)','Nivel de intensidad sonora (SIL)','Relación señal/ruido']}
+];
+
+// Formulario general: fórmulas directas del tema + despejes inversos útiles.
+const inverseFormulaCards = [
+ {id:'inv-w',f:'W = W₀ · 10^(PWL/10)',name:'Potencia sonora a partir del nivel PWL',group:'Niveles acústicos',kind:'Despeje inverso',meaning:'Se utiliza cuando conoces el nivel de potencia sonora PWL y necesitas recuperar la potencia sonora W.',vars:'W = potencia sonora; W₀ = potencia de referencia; PWL = nivel de potencia sonora.',units:'W y W₀ en vatios (W); PWL en dB. Convierte la potencia final a mW, μW o pW solo después del cálculo, si el ejercicio lo pide.',clue:'Te dan PWL en dB y te piden W.'},
+ {id:'inv-p',f:'P = P₀ · 10^(SPL/20)',name:'Presión sonora a partir del nivel SPL',group:'Niveles acústicos',kind:'Despeje inverso',meaning:'Se utiliza cuando conoces el nivel de presión sonora SPL y tienes que calcular la presión sonora P.',vars:'P = presión sonora; P₀ = presión de referencia; SPL = nivel de presión sonora.',units:'P y P₀ en pascales (Pa); SPL en dB. Convierte la presión final a mPa o μPa si te lo piden.',clue:'Te dan SPL en dB y te piden presión en Pa, mPa o μPa.'},
+ {id:'inv-i',f:'I = I₀ · 10^(SIL/10)',name:'Intensidad sonora a partir del nivel SIL',group:'Niveles acústicos',kind:'Despeje inverso',meaning:'Despeje matemático de la fórmula SIL para obtener la intensidad sonora a partir de su nivel.',vars:'I = intensidad sonora; I₀ = intensidad de referencia; SIL = nivel de intensidad sonora.',units:'I e I₀ en W/m²; SIL en dB.',clue:'Te dan SIL en dB y te piden intensidad I.'},
+ {id:'inv-t',f:'T = 1 / f',name:'Período a partir de la frecuencia',group:'Magnitudes de la onda',kind:'Despeje inverso',meaning:'Es la misma relación f = 1/T despejada para calcular el período cuando conoces la frecuencia.',vars:'T = período; f = frecuencia.',units:'T en segundos (s); f en hercios (Hz).',clue:'Te dan frecuencia y te piden cuánto dura un ciclo.'}
+];
+const formulaLibrary = formulas.map((f,i)=>({id:'direct-'+i,f:f.f,name:f.name,group:f.group,kind:'Fórmula del tema',meaning:f.meaning,vars:f.vars,units:f.units,clue:f.clue})).concat(inverseFormulaCards);
+const formulaChoiceQuestions = [
+ {q:'Un altavoz emite una potencia sonora de 0,05 W. Te piden su nivel de potencia sonora en dB.',given:'Dato disponible: W. Incógnita: PWL.',topic:'Nivel de potencia sonora',answer:'direct-6',options:['direct-6','direct-8','inv-w','direct-7'],why:'Como conoces W y buscas PWL en dB, usa la fórmula directa PWL = 10 · log₁₀(W/W₀).'},
+ {q:'Una máquina tiene un nivel de potencia sonora de 90 dB. Debes calcular la potencia W.',given:'Dato disponible: PWL. Incógnita: W.',topic:'Despeje inverso de PWL',answer:'inv-w',options:['direct-6','inv-w','direct-8','inv-p'],why:'Te dan el nivel en dB y piden la magnitud física W; necesitas el despeje inverso de PWL.'},
+ {q:'Mides una presión acústica de 2 mPa y quieres expresar el resultado como nivel de presión sonora en dB.',given:'Dato disponible: P. Incógnita: SPL.',topic:'Nivel de presión sonora',answer:'direct-8',options:['direct-6','direct-8','inv-p','direct-7'],why:'La presión es el dato y el nivel SPL el resultado; utiliza SPL = 20 · log₁₀(P/P₀). Antes de sustituir, convierte mPa a Pa.'},
+ {q:'Un sonómetro marca SPL = 60 dB. El ejercicio pide la presión acústica en mPa.',given:'Dato disponible: SPL. Incógnita: P.',topic:'Despeje inverso de SPL',answer:'inv-p',options:['direct-8','direct-7','inv-p','direct-6'],why:'Cuando te dan SPL y tienes que obtener P, debes usar P = P₀ · 10^(SPL/20). Al final conviertes Pa a mPa.'},
+ {q:'Conoces la intensidad sonora I y su valor de referencia I₀. Debes calcular el nivel de intensidad sonora.',given:'Datos: I e I₀. Incógnita: SIL.',topic:'Nivel de intensidad sonora',answer:'direct-7',options:['direct-6','direct-7','direct-8','inv-i'],why:'La magnitud conocida es la intensidad I y se pide su nivel SIL: SIL = 10 · log₁₀(I/I₀).'},
+ {q:'Conoces SIL y la referencia I₀. Quieres calcular la intensidad sonora I.',given:'Dato: SIL. Incógnita: I.',topic:'Despeje inverso de SIL',answer:'inv-i',options:['direct-7','inv-i','inv-w','inv-p'],why:'Es el despeje inverso de SIL, obtenido elevando 10 a SIL/10 y multiplicando por I₀.'},
+ {q:'Tienes la frecuencia superior y la inferior de una banda y necesitas su ancho de banda.',given:'Datos: fₛ y fᵢ. Incógnita: BW.',topic:'Bandas de frecuencia',answer:'direct-2',options:['direct-2','direct-3','direct-4','direct-5'],why:'El ancho de banda se calcula restando la frecuencia inferior a la superior: BW = fₛ − fᵢ.'},
+ {q:'Conoces los límites superior e inferior de una banda y buscas su frecuencia central.',given:'Datos: fₛ y fᵢ. Incógnita: f꜀.',topic:'Frecuencia central',answer:'direct-3',options:['direct-2','direct-3','direct-4','direct-5'],why:'La frecuencia central es la raíz cuadrada del producto de las frecuencias superior e inferior.'},
+ {q:'Un enunciado dice que la frecuencia superior de una banda es el doble de la inferior. ¿Qué relación identifica una banda de octava?',given:'Relaciona fₛ con fᵢ.',topic:'Banda de octava',answer:'direct-4',options:['direct-4','direct-5','direct-2','direct-3'],why:'La relación de una banda de octava es fₛ = 2 · fᵢ.'},
+ {q:'Te piden relacionar los límites de una banda de tercio de octava.',given:'Datos: frecuencia superior e inferior.',topic:'Banda de tercio de octava',answer:'direct-5',options:['direct-4','direct-5','direct-2','direct-3'],why:'En el tercio de octava, fₛ = fᵢ · 2^(1/3), según las diapositivas.'},
+ {q:'Conoces la velocidad de propagación del sonido y su frecuencia. Tienes que calcular la longitud de onda.',given:'Datos: c y f. Incógnita: λ.',topic:'Longitud de onda',answer:'direct-13',options:['direct-13','direct-0','inv-t','direct-16'],why:'Usa λ = c/f. La velocidad debe estar en m/s y la frecuencia en Hz para obtener λ en metros.'},
+ {q:'Conoces cuánto tarda una onda en completar un ciclo y quieres saber su frecuencia.',given:'Dato: T. Incógnita: f.',topic:'Frecuencia',answer:'direct-0',options:['direct-0','inv-t','direct-13','direct-1'],why:'La frecuencia es la inversa del período: f = 1/T.'},
+ {q:'Una señal tiene una frecuencia conocida y necesitas saber la duración de un ciclo.',given:'Dato: f. Incógnita: T.',topic:'Período',answer:'inv-t',options:['direct-0','inv-t','direct-13','direct-1'],why:'Despeja el período en la relación frecuencia-período: T = 1/f.'},
+ {q:'Conoces que el sonido tiene una frecuencia fundamental y el orden n del armónico. Te piden la frecuencia de ese armónico.',given:'Datos: n y f₀. Incógnita: fₙ.',topic:'Armónicos',answer:'direct-1',options:['direct-1','direct-0','direct-3','direct-5'],why:'La frecuencia del armónico es el orden multiplicado por la frecuencia fundamental: fₙ = n · f₀.'},
+ {q:'Para el cálculo aproximado que presenta el tema, te dan la temperatura del aire y necesitas la velocidad del sonido usando la expresión lineal.',given:'Dato: T en °C. Incógnita: c en m/s.',topic:'Velocidad y temperatura',answer:'direct-12',options:['direct-12','direct-11','direct-16','direct-13'],why:'La expresión lineal indicada en las diapositivas es c = 331,4 + 0,6 · T.'},
+ {q:'Conoces el espacio recorrido y el tiempo empleado por el sonido. Te piden la velocidad de propagación.',given:'Datos: e y t. Incógnita: c.',topic:'Velocidad, espacio y tiempo',answer:'direct-15',options:['direct-15','direct-16','direct-13','direct-12'],why:'Velocidad = espacio/tiempo: c = e/t.'},
+ {q:'Una onda rebota en una pared. Conoces la distancia de ida hasta la pared y te piden la distancia total de ida y vuelta.',given:'Dato: d (distancia de ida). Incógnita: e (recorrido total).',topic:'Eco',answer:'direct-16',options:['direct-16','direct-15','direct-13','direct-0'],why:'La onda recorre la distancia de ida y la vuelta; por eso e = 2·d.'},
+ {q:'Dos fuentes no coherentes generan niveles L₁ y L₂. Te piden el nivel sonoro total.',given:'Datos: dos niveles en dB. Incógnita: Ltotal.',topic:'Suma de niveles sonoros',answer:'direct-9',options:['direct-9','direct-10','direct-6','direct-8'],why:'Los decibelios de dos fuentes no coherentes no se suman directamente; se usa la suma logarítmica.'},
+ {q:'Hay N fuentes no coherentes, todas con la misma potencia y a la misma distancia. Conoces Lp de una fuente.',given:'Datos: N y Lp. Incógnita: Ltotal.',topic:'Suma de fuentes iguales',answer:'direct-10',options:['direct-9','direct-10','direct-6','direct-8'],why:'Para N fuentes iguales a la misma distancia se usa Ltotal = 10·log₁₀(N) + Lp.'},
+ {q:'El sonido incidente se reparte entre energía reflejada, absorbida y transmitida. ¿Qué fórmula representa ese balance?',given:'Se conocen las tres contribuciones de energía.',topic:'Energía acústica',answer:'direct-14',options:['direct-14','direct-9','direct-13','direct-15'],why:'La diapositiva indica Ei = Er + Ea + Et.'},
+ {q:'El fabricante da la sensibilidad del micrófono y necesitas expresarla en decibelios usando la referencia de 1 V/Pa.',given:'Dato: S; se debe expresar primero en V/Pa si llega en mV/Pa.',topic:'Sensibilidad del micrófono',answer:'direct-17',options:['direct-17','direct-8','direct-7','direct-6'],why:'La fórmula de la diapositiva de micrófonos usa S(dB) = 20·log₁₀(S/Sref), con Sref = 1 V/Pa y ambas sensibilidades en las mismas unidades.'},
+ {q:'El tema te pide estimar la velocidad del sonido con la otra expresión que contiene una raíz cuadrada y c₀.',given:'Datos: temperatura T y velocidad de referencia c₀.',topic:'Velocidad y temperatura',answer:'direct-11',options:['direct-11','direct-12','direct-15','direct-13'],why:'Esta es la expresión alternativa presentada en la diapositiva. El material tiene una posible inconsistencia en el valor de c₀; confirma ese dato con el profesor.'}
+];
+let pickIndex=0,pickScore=0,pickAttempts=0,pickAnswered=false,pickOrder=[],pickCurrentOptions=[];
+function renderFormulaCatalog(){
+ const search=$('formula-search').value.trim().toLocaleLowerCase('es');const group=$('formula-filter').value;
+ const list=formulaLibrary.filter(f=>(group==='all'||f.group===group)&&(!search||[f.f,f.name,f.group,f.meaning,f.vars,f.units,f.clue].join(' ').toLocaleLowerCase('es').includes(search)));
+ $('formula-library-count').textContent=`${list.length} de ${formulaLibrary.length} fórmulas`;$('formula-empty').hidden=list.length>0;
+ $('formula-catalog').innerHTML=list.map(f=>`<article class="formula-card"><span class="tag">${f.group}</span> <span class="tag">${f.kind||'Fórmula del tema'}</span><h3>${f.name}</h3><div class="formula"><div class="math">${f.f}</div></div><p><strong>¿Cuándo usarla?</strong> ${f.meaning}</p><p><strong>Variables:</strong> ${f.vars}</p><p><strong>Unidades:</strong> ${f.units}</p><p class="formula-meta"><strong>Pista:</strong> ${f.clue}</p></article>`).join('');
+}
+function buildFormulaCatalog(){
+ const groups=[...new Set(formulaLibrary.map(f=>f.group))].sort((a,b)=>a.localeCompare(b,'es'));
+ $('formula-filter').innerHTML='<option value="all">Todos los temas</option>'+groups.map(g=>`<option value="${g}">${g}</option>`).join('');
+ $('formula-search').addEventListener('input',renderFormulaCatalog);$('formula-filter').addEventListener('change',renderFormulaCatalog);renderFormulaCatalog();
+}
+function formulaById(id){return formulaLibrary.find(f=>f.id===id)}
+function renderFormulaPick(){
+ if(pickIndex>=pickOrder.length){finishFormulaPick();return;}
+ pickAnswered=false;const q=formulaChoiceQuestions[pickOrder[pickIndex]];$('pick-count').textContent=`Pregunta ${pickIndex+1} / ${pickOrder.length}`;$('pick-progress').style.width=`${100*(pickIndex+1)/pickOrder.length}%`;$('pick-topic').textContent=q.topic;$('pick-prompt').textContent=q.q;$('pick-given').textContent=q.given;$('pick-feedback').innerHTML='';$('pick-next').disabled=true;$('pick-next').hidden=false;$('pick-restart').hidden=true;$('pick-reveal').disabled=false;
+ const opts=shuffle(q.options.map(id=>({id,entry:formulaById(id)})));pickCurrentOptions=opts;const correct=opts.findIndex(o=>o.id===q.answer);renderOptions($('pick-options'),opts.map(o=>o.entry.f),correct,null,false,chosen=>answerFormulaPick(chosen,opts,q));
+}
+function answerFormulaPick(chosen,opts,q){if(pickAnswered)return;pickAnswered=true;pickAttempts++;const correct=opts.findIndex(o=>o.id===q.answer);const ok=chosen===correct;if(ok)pickScore++;renderOptions($('pick-options'),opts.map(o=>o.entry.f),correct,chosen,true,()=>{});const answer=formulaById(q.answer);$('pick-feedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><strong>${ok?'¡Correcto!':'La fórmula adecuada es:'} ${answer.name}</strong><p><b>${answer.f}</b></p><p>${q.why}</p><p><b>Unidades:</b> ${answer.units}</p></div>`;$('pick-next').disabled=false;$('pick-reveal').disabled=true;}
+function revealFormulaPick(){if(pickAnswered)return;const q=formulaChoiceQuestions[pickOrder[pickIndex]];pickAnswered=true;const opts=pickCurrentOptions;const correct=opts.findIndex(o=>o.id===q.answer);renderOptions($('pick-options'),opts.map(o=>o.entry.f),correct,null,true,()=>{});const answer=formulaById(q.answer);$('pick-feedback').innerHTML=`<div class="feedback neutral"><strong>Solución: ${answer.name}</strong><p><b>${answer.f}</b></p><p>${q.why}</p><p class="small">Consultar la solución no cuenta como respuesta.</p></div>`;$('pick-next').disabled=false;$('pick-reveal').disabled=true;}
+function finishFormulaPick(){
+ $('pick-count').textContent='Finalizado';$('pick-progress').style.width='100%';$('pick-topic').textContent='Resumen';$('pick-prompt').textContent='¡Has completado el entrenamiento!';$('pick-given').textContent=`Has acertado ${pickScore} de ${pickAttempts} preguntas contestadas.`;$('pick-options').innerHTML=`<div class="stats"><div class="stat"><strong>${pickScore}/${pickAttempts}</strong><span>Aciertos contestados</span></div><div class="stat"><strong>${pickAttempts?Math.round(100*pickScore/pickAttempts):0}%</strong><span>Porcentaje de acierto</span></div><div class="stat"><strong>${formulaChoiceQuestions.length}</strong><span>Preguntas totales</span></div></div><p>${pickAttempts&&pickScore/pickAttempts>=.85?'¡Muy bien! Estás eligiendo las fórmulas con seguridad.':'Repasa el formulario, especialmente los despejes inversos, y repite el entrenamiento.'}</p>`;$('pick-feedback').innerHTML='';$('pick-next').hidden=true;$('pick-reveal').hidden=true;$('pick-restart').hidden=false;
+}
+$('pick-reveal').addEventListener('click',revealFormulaPick);$('pick-next').addEventListener('click',()=>{pickIndex++;renderFormulaPick()});$('pick-restart').addEventListener('click',()=>{pickIndex=0;pickScore=0;pickAttempts=0;pickOrder=shuffle(formulaChoiceQuestions.map((_,i)=>i));$('pick-next').hidden=false;$('pick-reveal').hidden=false;renderFormulaPick()});
+
+const units=[
+['f','Frecuencia','Hz · hercios'],['T (período)','Tiempo de un ciclo','s · segundos'],['f₀ y fₙ','Frecuencias fundamental y armónicas','Hz · hercios'],['n','Número de armónico','Sin unidades'],['BW','Ancho de banda','Hz · hercios'],['fₛ, fᵢ, f꜀','Frecuencias superior, inferior y central','Hz · hercios'],['W y W₀','Potencia sonora y referencia','W · vatios'],['PWL','Nivel de potencia sonora','dB · decibelios'],['I e I₀','Intensidad sonora y referencia','W/m² · vatios por metro cuadrado'],['SIL','Nivel de intensidad sonora','dB · decibelios'],['P y P₀','Presión acústica y referencia','Pa · pascales'],['SPL','Nivel de presión sonora','dB · decibelios'],['L₁, L₂, Lp, Ltotal','Niveles acústicos','dB · decibelios'],['N','Número de fuentes','Sin unidades'],['c y c₀','Velocidad del sonido','m/s · metros por segundo'],['T (temperatura)','Temperatura en fórmula de velocidad','°C · grados Celsius'],['λ','Longitud de onda','m · metros'],['Ei, Er, Ea, Et','Energías acústicas','La misma unidad para todas'],['e y d','Espacio y distancia','m · metros'],['t','Tiempo empleado','s · segundos'],['α','Coeficiente de absorción','Sin unidades'],['Φ','Fase de la onda','° · grados'],['S','Sensibilidad del micrófono','mV/Pa · milivoltios por pascal (convertir a V/Pa para la fórmula en dB)'],['S(dB)','Sensibilidad relativa del micrófono','dB · decibelios']
+];
+const unitQs=[
+{q:'¿En qué unidad se expresa la frecuencia f?',o:['Hz','s','m/s','dB'],a:0,why:'La frecuencia se mide en hercios: ciclos por segundo.'},
+{q:'¿Qué unidad corresponde al período T?',o:['Hz','s','Pa','W'],a:1,why:'El período es un tiempo: se expresa en segundos.'},
+{q:'¿En qué unidad se expresa el nivel de presión sonora SPL?',o:['Pa','W/m²','dB','Hz'],a:2,why:'La presión P se expresa en Pa, pero su nivel SPL se expresa en dB.'},
+{q:'¿En qué unidad se expresa la presión acústica P?',o:['dB','Pa','W','Hz'],a:1,why:'El pascal es la unidad de presión.'},
+{q:'¿Cuál es la unidad de potencia sonora W?',o:['W','W/m²','Pa','m/s'],a:0,why:'La potencia sonora se expresa en vatios.'},
+{q:'¿En qué unidad se mide la intensidad sonora I?',o:['W','W/m²','Pa','dB'],a:1,why:'La intensidad es potencia por unidad de superficie.'},
+{q:'¿En qué unidad se expresa la longitud de onda λ?',o:['s','Hz','m','dB'],a:2,why:'La longitud de onda representa una distancia.'},
+{q:'¿Cuál es la unidad de velocidad c?',o:['m','m/s','Hz','°C'],a:1,why:'Es una distancia dividida entre un tiempo.'},
+{q:'¿En qué unidad se expresa el tiempo t del eco?',o:['m','Hz','s','Pa'],a:2,why:'El tiempo empleado se mide en segundos.'},
+{q:'En c = 331,4 + 0,6 · T, ¿en qué unidad va T según el tema?',o:['K','°C','Pa','Hz'],a:1,why:'La expresión del material utiliza temperatura en grados Celsius.'},
+{q:'¿Cuál es la unidad del nivel total Ltotal?',o:['W','Pa','dB','W/m²'],a:2,why:'Al combinar niveles acústicos, el resultado sigue expresándose en decibelios.'},
+{q:'¿Qué unidad tiene el número de fuentes N?',o:['dB','Hz','No tiene unidades','W'],a:2,why:'N es un recuento de fuentes.'},
+{q:'En la fórmula de frecuencia central, ¿qué unidad tiene f꜀?',o:['Hz','s','m','dB'],a:0,why:'Es una frecuencia y se expresa en hercios.'},
+{q:'¿En qué unidad suele darse la sensibilidad S de un micrófono en las especificaciones?',o:['mV/Pa','dB únicamente','W/m²','Hz'],a:0,why:'La diapositiva de micrófonos (página 3) indica que la sensibilidad se mide en mV/Pa, normalmente a 1 kHz.'},
+{q:'En S(dB) = 20 · log₁₀(S / (1 V/Pa)), ¿en qué unidad se expresa el resultado?',o:['V/Pa','mV/Pa','dB','Pa'],a:2,why:'S se compara con la referencia de 1 V/Pa y el nivel resultante se expresa en decibelios. Si S se proporciona en mV/Pa, conviértela a V/Pa antes de usar esta forma de la fórmula.'},
+{q:'¿En qué unidad se expresa el ancho de banda BW?',o:['Hz','dB','Pa','s'],a:0,why:'Es una diferencia entre dos frecuencias.'}
+];
+const examQs=[
+{q:'Quieres calcular el nivel de presión sonora a partir de P y P₀.',a:0,o:['SPL = 20 · log₁₀(P / P₀)','PWL = 10 · log₁₀(W / W₀)','SIL = 10 · log₁₀(I / I₀)','λ = c / f'],why:'SPL utiliza presión sonora y el factor 20.'},
+{q:'Conoces la potencia sonora W y su referencia W₀. Buscas el nivel de potencia.',a:1,o:['SIL = 10 · log₁₀(I / I₀)','PWL = 10 · log₁₀(W / W₀)','SPL = 20 · log₁₀(P / P₀)','Ltotal = 10 · log₁₀(N) + Lp'],why:'PWL corresponde al nivel de potencia sonora.'},
+{q:'Necesitas obtener la longitud de onda conociendo velocidad y frecuencia.',a:1,o:['f = 1 / T','λ = c / f','BW = fₛ − fᵢ','c = e / t'],why:'Divide la velocidad de propagación entre la frecuencia.'},
+{q:'Vas a combinar los niveles de dos fuentes sonoras no coherentes.',a:0,o:['Ltotal = 10 · log₁₀(10^(L₁/10) + 10^(L₂/10))','Ltotal = L₁ + L₂','Ltotal = 10 · log₁₀(N) + Lp','SPL = 20 · log₁₀(P / P₀)'],why:'Para fuentes no coherentes se utiliza la expresión logarítmica; no se suman directamente los decibelios.'},
+{q:'Tienes N fuentes iguales, no coherentes, a la misma distancia y conoces su nivel individual Lp.',a:0,o:['Ltotal = 10 · log₁₀(N) + Lp','Ltotal = L₁ + L₂','PWL = 10 · log₁₀(W / W₀)','BW = fₛ − fᵢ'],why:'Es la expresión simplificada del tema para N fuentes iguales.'},
+{q:'Tienes los dos extremos de una banda y quieres su frecuencia central.',a:0,o:['f꜀ = √(fₛ · fᵢ)','BW = fₛ − fᵢ','fₛ = 2 · fᵢ','f = 1 / T'],why:'La frecuencia central se obtiene mediante la raíz cuadrada del producto de los extremos.'},
+{q:'Necesitas reconocer una banda de octava.',a:1,o:['fₛ = fᵢ · 2^(1/3)','fₛ = 2 · fᵢ','f꜀ = √(fₛ · fᵢ)','BW = fₛ − fᵢ'],why:'En una octava, la frecuencia superior es el doble de la inferior.'},
+{q:'Un sonido se refleja en una pared y regresa. Conoces la distancia de ida d y quieres el recorrido total.',a:0,o:['e = 2 · d','c = e / t','λ = c / f','f = 1 / T'],why:'Hay recorrido de ida y de vuelta; por eso el total es el doble.'},
+{q:'Conoces el espacio recorrido e y el tiempo t y quieres calcular la velocidad.',a:0,o:['c = e / t','e = 2 · d','λ = c / f','c = 331,4 + 0,6 · T'],why:'La velocidad es el espacio recorrido dividido entre el tiempo.'},
+{q:'Quieres calcular la frecuencia conociendo el tiempo que tarda la onda en completar un ciclo.',a:0,o:['f = 1 / T','fₙ = n · f₀','BW = fₛ − fᵢ','λ = c / f'],why:'Frecuencia y período son magnitudes inversas.'},
+{q:'Quieres calcular la velocidad aproximada del sonido a partir de la temperatura usando la fórmula lineal del tema.',a:1,o:['c = c₀ · √(1 + T/273)','c = 331,4 + 0,6 · T','c = e / t','λ = c / f'],why:'Es la expresión lineal que aparece en la diapositiva de propagación.'},
+{q:'El fabricante da la sensibilidad de un micrófono y quieres expresarla en decibelios usando como referencia 1 V/Pa.',a:0,o:['S(dB) = 20 · log₁₀(S / Sref) = 20 · log₁₀(S / (1 V/Pa))','SPL = 20 · log₁₀(P / P₀)','SIL = 10 · log₁₀(I / I₀)','PWL = 10 · log₁₀(W / W₀)'],why:'La diapositiva de micrófonos, página 3, presenta la sensibilidad en dB mediante 20 · log y la referencia Sref = 1 V/Pa. S y Sref deben estar en las mismas unidades.'},
+{q:'Quieres calcular la frecuencia de un armónico conociendo su orden n y la frecuencia fundamental.',a:0,o:['fₙ = n · f₀','f = 1 / T','f꜀ = √(fₛ · fᵢ)','fₛ = 2 · fᵢ'],why:'Los armónicos son múltiplos de la frecuencia fundamental.'}
+];
+let li=0,pi=0,ui=0,ei=0;let ps=0,pa=0,us=0,ua=0,es=0,ea=0;let pAnswered=false,uAnswered=false,eAnswered=false;let pOrder=[],uOrder=[],eOrder=[];
+function setView(v){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===v));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.goto)));
+function buildLearn(){ $('learn-select').innerHTML=formulas.map((f,i)=>`<option value="${i}">${i+1}. ${f.name}</option>`).join('');$('learn-select').addEventListener('change',e=>{li=+e.target.value;renderLearn()});renderLearn()}
+function renderLearn(){let f=formulas[li];$('learn-select').value=li;$('learn-count').textContent=`${li+1} / ${formulas.length}`;$('learn-progress').style.width=`${100*(li+1)/formulas.length}%`;$('learn-group').textContent=f.group;$('learn-formula').textContent=f.f;$('learn-name').textContent=f.name;$('learn-meaning').textContent=f.meaning;$('learn-vars').textContent=f.vars;$('learn-units').textContent=f.units;$('learn-clue').textContent=f.clue;$('learn-prev').disabled=li===0;$('learn-next').textContent=li===formulas.length-1?'Ir a practicar →':'Siguiente →';$('learn-note').innerHTML=li===11?'<div class="note"><strong>Nota del material:</strong> en una diapositiva aparece c₀ = 313 m/s, pero también aparece la fórmula lineal c = 331,4 + 0,6 · T. Los datos no concuerdan a 0 °C; confirma con el profesor qué valor usar.</div>':''}
+$('learn-prev').onclick=()=>{li=Math.max(0,li-1);renderLearn()};$('learn-next').onclick=()=>{if(li<formulas.length-1){li++;renderLearn()}else setView('practicar')};$('learn-practice').onclick=()=>{pi=li;resetPracticeQuestion();setView('practicar')};
+function shuffle(arr){let a=arr.slice();for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function initOrder(){pOrder=shuffle(formulas.map((_,i)=>i));uOrder=shuffle(unitQs.map((_,i)=>i));eOrder=shuffle(examQs.map((_,i)=>i))}
+function renderOptions(container,opts,correctIndex,chosen,disabled,callback){container.innerHTML='';opts.forEach((o,i)=>{let b=document.createElement('button');b.className='option';if(disabled&&i===correctIndex)b.classList.add('correct');if(disabled&&chosen===i&&chosen!==correctIndex)b.classList.add('wrong');b.disabled=disabled;b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span>`;b.onclick=()=>callback(i);container.appendChild(b)})}
+function renderPractice(){if(pi>=formulas.length){finishQuiz('practice');return}pAnswered=false;let ix=pOrder[pi]??pi;let f=formulas[ix];$('practice-count').textContent=`Pregunta ${pi+1} / ${formulas.length}`;$('practice-progress').style.width=`${100*(pi+1)/formulas.length}%`;$('practice-formula').textContent=f.f;$('practice-feedback').innerHTML='';$('practice-next').disabled=true;$('practice-next').hidden=false;$('practice-restart').hidden=true;$('practice-reveal').disabled=false;let options=shuffle(f.opts.map((x)=>({text:x,correct:x===f.opts[0]})));renderOptions($('practice-options'),options.map(x=>x.text),options.findIndex(x=>x.correct),null,false,chosen=>answerPractice(chosen,options,f));}
+function answerPractice(chosen,options,f){if(pAnswered)return;pAnswered=true;pa++;let ok=options[chosen].correct;if(ok)ps++;renderOptions($('practice-options'),options.map(x=>x.text),options.findIndex(x=>x.correct),chosen,true,()=>{});$('practice-feedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><strong>${ok?'¡Correcto!':'No es esa.'} ${f.name}</strong><p>${f.meaning}</p><p><b>Unidades:</b> ${f.units}</p></div>`;$('practice-next').disabled=false;$('practice-reveal').disabled=true}
+function revealPractice(){if(pAnswered)return;let ix=pOrder[pi]??pi,f=formulas[ix];pAnswered=true;renderOptions($('practice-options'),f.opts,0,null,true,()=>{});$('practice-feedback').innerHTML=`<div class="feedback neutral"><strong>Solución: ${f.name}</strong><p>${f.meaning}</p><p><b>Unidades:</b> ${f.units}</p><p class="small">Consultar la solución no suma ni resta puntos.</p></div>`;$('practice-next').disabled=false;$('practice-reveal').disabled=true}
+function resetPracticeQuestion(){renderPractice()}$('practice-reveal').onclick=revealPractice;$('practice-next').onclick=()=>{pi++;renderPractice()};$('practice-restart').onclick=()=>{pi=0;ps=0;pa=0;pOrder=shuffle(formulas.map((_,i)=>i));renderPractice()};
+function renderUnits(){if(ui>=unitQs.length){finishQuiz('unit');return}uAnswered=false;let q=unitQs[uOrder[ui]??ui];$('unit-count').textContent=`Pregunta ${ui+1} / ${unitQs.length}`;$('unit-progress').style.width=`${100*(ui+1)/unitQs.length}%`;$('unit-question').textContent=q.q;$('unit-feedback').innerHTML='';$('unit-next').disabled=true;$('unit-next').hidden=false;$('unit-restart').hidden=true;$('unit-reveal').disabled=false;renderOptions($('unit-options'),q.o,q.a,null,false,chosen=>answerUnit(chosen,q))}
+function answerUnit(chosen,q){if(uAnswered)return;uAnswered=true;ua++;if(chosen===q.a)us++;renderOptions($('unit-options'),q.o,q.a,chosen,true,()=>{});$('unit-feedback').innerHTML=`<div class="feedback ${chosen===q.a?'good':'bad'}"><strong>${chosen===q.a?'¡Correcto!':'Respuesta correcta: '+q.o[q.a]}</strong><p>${q.why}</p></div>`;$('unit-next').disabled=false;$('unit-reveal').disabled=true}
+function revealUnit(){if(uAnswered)return;let q=unitQs[uOrder[ui]??ui];uAnswered=true;renderOptions($('unit-options'),q.o,q.a,null,true,()=>{});$('unit-feedback').innerHTML=`<div class="feedback neutral"><strong>Respuesta: ${q.o[q.a]}</strong><p>${q.why}</p><p class="small">Consultar la solución no suma ni resta puntos.</p></div>`;$('unit-next').disabled=false;$('unit-reveal').disabled=true}
+$('unit-reveal').onclick=revealUnit;$('unit-next').onclick=()=>{ui++;renderUnits()};$('unit-restart').onclick=()=>{ui=0;us=0;ua=0;uOrder=shuffle(unitQs.map((_,i)=>i));renderUnits()};
+function renderExam(){if(ei>=examQs.length){finishQuiz('exam');return}eAnswered=false;let q=examQs[eOrder[ei]??ei];$('exam-count').textContent=`Pregunta ${ei+1} / ${examQs.length}`;$('exam-progress').style.width=`${100*(ei+1)/examQs.length}%`;$('exam-question').textContent=q.q;$('exam-feedback').innerHTML='';$('exam-next').disabled=true;$('exam-next').hidden=false;$('exam-restart').hidden=true;$('exam-reveal').disabled=false;renderOptions($('exam-options'),q.o,q.a,null,false,chosen=>answerExam(chosen,q))}
+function answerExam(chosen,q){if(eAnswered)return;eAnswered=true;ea++;if(chosen===q.a)es++;renderOptions($('exam-options'),q.o,q.a,chosen,true,()=>{});$('exam-feedback').innerHTML=`<div class="feedback ${chosen===q.a?'good':'bad'}"><strong>${chosen===q.a?'¡Correcto!':'Repasa esta elección.'}</strong><p><b>Fórmula:</b> ${q.o[q.a]}</p><p>${q.why}</p></div>`;$('exam-next').disabled=false;$('exam-reveal').disabled=true}
+function revealExam(){if(eAnswered)return;let q=examQs[eOrder[ei]??ei];eAnswered=true;renderOptions($('exam-options'),q.o,q.a,null,true,()=>{});$('exam-feedback').innerHTML=`<div class="feedback neutral"><strong>Solución: ${q.o[q.a]}</strong><p>${q.why}</p><p class="small">Consultar la solución no suma ni resta puntos.</p></div>`;$('exam-next').disabled=false;$('exam-reveal').disabled=true}
+$('exam-reveal').onclick=revealExam;$('exam-next').onclick=()=>{ei++;renderExam()};$('exam-restart').onclick=()=>{ei=0;es=0;ea=0;eOrder=shuffle(examQs.map((_,i)=>i));renderExam()};
+function finishQuiz(which){let pre=which==='practice'?'practice':which==='unit'?'unit':'exam';let score=which==='practice'?ps:which==='unit'?us:es;let att=which==='practice'?pa:which==='unit'?ua:ea;let total=which==='practice'?formulas.length:which==='unit'?unitQs.length:examQs.length;let name=which==='practice'?'Práctica completada':which==='unit'?'Test de unidades completado':'Reto de examen completado';let pct=att?Math.round(score/att*100):0;let id=which==='practice'?'practice':which==='unit'?'unit':'exam';$(id+'-count').textContent='Finalizado';$(id+'-progress').style.width='100%';let qid=which==='unit'?'unit-question':which==='exam'?'exam-question':'practice-formula';$(qid).textContent=name;let opid=which==='unit'?'unit-options':which==='exam'?'exam-options':'practice-options';$(opid).innerHTML=`<div class="stats"><div class="stat"><strong>${score}/${att}</strong><span>Aciertos contestados</span></div><div class="stat"><strong>${pct}%</strong><span>Porcentaje de acierto</span></div><div class="stat"><strong>${total}</strong><span>Preguntas del test</span></div></div><p>${att===0?'Has consultado las soluciones, pero no has respondido ninguna pregunta.':pct>=85?'¡Muy bien! Ya reconoces gran parte de las fórmulas.':pct>=65?'Vas progresando. Repasa las explicaciones de las preguntas que has fallado.':'Vuelve al apartado Aprender y repite el test después de estudiar las pistas y unidades.'}</p>`;$(id+'-feedback').innerHTML='';$(id+'-next').hidden=true;$(id+'-reveal').hidden=true;$(id+'-restart').hidden=false}
+function buildUnitTable(){$('unit-table-body').innerHTML=units.map(u=>`<tr><td>${u[0]}</td><td>${u[1]}</td><td>${u[2]}</td></tr>`).join('')}
+// Ejercicios de ampliación del profesor: PWL, SPL y fórmulas inversas.
+const soundExercises = [
+ {title:'Ejercicio 1 · Pequeño altavoz',block:'Bloque 1 · Cálculo de nivel de potencia sonora (PWL)',prompt:'Un pequeño altavoz emite una potencia sonora de 50 mW. Calcula su nivel de potencia sonora (PWL) en dB.',formula:'PWL = 10 · log₁₀(W / W₀)',given:'Datos: W = 50 mW; W₀ = 1 · 10⁻¹² W. Responde en dB.',unit:'dB',answer:106.9897,tolerance:0.5,steps:'<p><b>1. Convertir la potencia a vatios:</b> 50 mW = 50 · 10⁻³ W = 0,05 W.</p><p><b>2. Sustituir en la fórmula:</b> PWL = 10 · log₁₀(0,05 / 10⁻¹²).</p><p><b>3. Calcular:</b> PWL = 10 · log₁₀(5 · 10¹⁰) ≈ 106,99 dB.</p><p><b>Resultado:</b> aproximadamente 107 dB.</p>'},
+ {title:'Ejercicio 2 · Máquina industrial',block:'Bloque 1 · Cálculo de nivel de potencia sonora (PWL)',prompt:'Una máquina industrial genera una potencia acústica de 400 nW. Calcula su nivel de potencia sonora (PWL) en dB.',formula:'PWL = 10 · log₁₀(W / W₀)',given:'Datos: W = 400 nW; W₀ = 1 · 10⁻¹² W. Responde en dB.',unit:'dB',answer:56.0206,tolerance:0.5,steps:'<p><b>1. Convertir a vatios:</b> 400 nW = 400 · 10⁻⁹ W = 4 · 10⁻⁷ W.</p><p><b>2. Sustituir:</b> PWL = 10 · log₁₀((4 · 10⁻⁷) / (10⁻¹²)) = 10 · log₁₀(4 · 10⁵).</p><p><b>3. Calcular:</b> PWL ≈ 56,02 dB.</p><p><b>Resultado:</b> aproximadamente 56 dB.</p>'},
+ {title:'Ejercicio 3 · Motor de aire acondicionado',block:'Bloque 2 · Cálculo de potencia sonora (W)',prompt:'Un motor de aire acondicionado tiene un nivel de potencia sonora de 90 dB. Calcula la potencia sonora emitida y expresa el resultado en milivatios (mW).',formula:'W = 10⁻¹² · 10^(PWL/10)',given:'Datos: PWL = 90 dB; W₀ = 1 · 10⁻¹² W. Responde en mW.',unit:'mW',answer:1,tolerance:0.02,steps:'<p><b>1. Utilizar la fórmula inversa:</b> W = 10⁻¹² · 10^(PWL/10).</p><p><b>2. Sustituir:</b> W = 10⁻¹² · 10^(90/10) = 10⁻¹² · 10⁹.</p><p><b>3. Calcular:</b> W = 10⁻³ W = 0,001 W.</p><p><b>4. Pasar a milivatios:</b> 0,001 W = 1 mW.</p><p><b>Resultado:</b> 1 mW.</p>'},
+ {title:'Ejercicio 4 · Fuente acústica pequeña',block:'Bloque 2 · Cálculo de potencia sonora (W)',prompt:'Una fuente acústica muy pequeña produce un nivel de potencia sonora de 30 dB. Calcula su potencia sonora en picovatios (pW).',formula:'W = 10⁻¹² · 10^(PWL/10)',given:'Datos: PWL = 30 dB; W₀ = 1 · 10⁻¹² W. Responde en pW.',unit:'pW',answer:1000,tolerance:5,steps:'<p><b>1. Sustituir en la fórmula inversa:</b> W = 10⁻¹² · 10^(30/10).</p><p><b>2. Calcular:</b> W = 10⁻¹² · 10³ = 10⁻⁹ W.</p><p><b>3. Convertir a picovatios:</b> 1 pW = 10⁻¹² W, por tanto 10⁻⁹ W = 1000 pW.</p><p><b>Resultado:</b> 1000 pW.</p>'},
+ {title:'Ejercicio 5 · Conversación normal',block:'Bloque 3 · Cálculo de nivel de presión sonora (SPL)',prompt:'Un sonómetro registra una presión sonora de 2 mPa durante una conversación normal. Calcula el nivel de presión sonora (SPL) en dB.',formula:'SPL = 20 · log₁₀(P / P₀)',given:'Datos: P = 2 mPa; P₀ = 2 · 10⁻⁵ Pa. Responde en dB.',unit:'dB',answer:40,tolerance:0.2,steps:'<p><b>1. Convertir a pascales:</b> 2 mPa = 2 · 10⁻³ Pa = 0,002 Pa.</p><p><b>2. Sustituir:</b> SPL = 20 · log₁₀(0,002 / (2 · 10⁻⁵)).</p><p><b>3. Simplificar:</b> 0,002 / 0,00002 = 100.</p><p><b>4. Calcular:</b> SPL = 20 · log₁₀(100) = 20 · 2 = 40 dB.</p><p><b>Resultado:</b> 40 dB.</p>'},
+ {title:'Ejercicio 6 · Obra en la vía pública',block:'Bloque 3 · Cálculo de nivel de presión sonora (SPL)',prompt:'Cerca de una obra se mide una presión sonora de 632,5 μPa. Calcula el nivel SPL correspondiente en dB.',formula:'SPL = 20 · log₁₀(P / P₀)',given:'Datos: P = 632,5 μPa; P₀ = 2 · 10⁻⁵ Pa. Responde en dB.',unit:'dB',answer:30.0006,tolerance:0.15,steps:'<p><b>1. Convertir a pascales:</b> 632,5 μPa = 632,5 · 10⁻⁶ Pa = 0,0006325 Pa.</p><p><b>2. Sustituir:</b> SPL = 20 · log₁₀(0,0006325 / 0,00002).</p><p><b>3. Calcular:</b> el cociente es 31,625 y SPL ≈ 30,001 dB.</p><p><b>Resultado:</b> aproximadamente 30 dB.</p>'},
+ {title:'Ejercicio 7 · Sala de ensayo',block:'Bloque 4 · Cálculo de presión sonora (P)',prompt:'Un sonómetro indica SPL = 94 dB. Calcula la presión sonora y expresa el resultado final en micropascales (μPa). También se muestran las equivalencias en Pa y mbar.',formula:'P = 2 · 10⁻⁵ · 10^(SPL/20)',given:'Datos: SPL = 94 dB; P₀ = 2 · 10⁻⁵ Pa. Introduce el resultado en μPa.',unit:'μPa',answer:1002374.47,tolerance:10000,steps:'<p><b>1. Usar la fórmula inversa:</b> P = 2 · 10⁻⁵ · 10^(94/20) Pa.</p><p><b>2. Calcular en pascales:</b> P ≈ 1,0024 Pa.</p><p><b>3. Convertir a milibares:</b> 1 mbar = 100 Pa, así que P ≈ 1,0024 / 100 = 0,010024 mbar.</p><p><b>4. Convertir a micropascales:</b> 1 Pa = 10⁶ μPa, por tanto P ≈ 1,0024 · 10⁶ = 1 002 400 μPa.</p><p><b>Resultado:</b> aproximadamente 1 002 400 μPa.</p>'},
+ {title:'Ejercicio 8 · Umbral de molestia',block:'Bloque 4 · Cálculo de presión sonora (P)',prompt:'El umbral de molestia en un estudio se fija en SPL = 60 dB. Calcula la presión sonora y exprésala en milipascales (mPa).',formula:'P = 2 · 10⁻⁵ · 10^(SPL/20)',given:'Datos: SPL = 60 dB; P₀ = 2 · 10⁻⁵ Pa. Responde en mPa.',unit:'mPa',answer:20,tolerance:0.2,steps:'<p><b>1. Sustituir en la fórmula inversa:</b> P = 2 · 10⁻⁵ · 10^(60/20) Pa.</p><p><b>2. Calcular:</b> 60/20 = 3 y 10³ = 1000; P = 2 · 10⁻⁵ · 1000 = 0,02 Pa.</p><p><b>3. Convertir a milipascales:</b> 0,02 Pa = 20 mPa.</p><p><b>Resultado:</b> 20 mPa.</p>'}
+ ,{title:'Ejercicio 9 · Calcular frecuencia',block:'Bloque extra · Magnitudes de la onda',prompt:'Una onda completa un ciclo en 0,02 s. Calcula su frecuencia en hercios.',formula:'f = 1 / T',given:'Datos: T = 0,02 s. Responde en Hz.',unit:'Hz',answer:50,tolerance:0.05,steps:'<p><b>1. Identificar los datos:</b> el período es T = 0,02 s y nos piden la frecuencia f.</p><p><b>2. Usar la relación inversa:</b> f = 1/T.</p><p><b>3. Sustituir:</b> f = 1/0,02 = 50 Hz.</p><p><b>Resultado:</b> 50 Hz.</p>'}
+ ,{title:'Ejercicio 10 · Calcular el período',block:'Bloque extra · Magnitudes de la onda',prompt:'Una señal tiene una frecuencia de 250 Hz. Calcula cuánto dura un ciclo y expresa el resultado en milisegundos (ms).',formula:'T = 1 / f',given:'Datos: f = 250 Hz. Responde en ms.',unit:'ms',answer:4,tolerance:0.05,steps:'<p><b>1. Despeje:</b> T = 1/f.</p><p><b>2. Sustituir:</b> T = 1/250 = 0,004 s.</p><p><b>3. Convertir a milisegundos:</b> 0,004 s × 1000 = 4 ms.</p><p><b>Resultado:</b> 4 ms.</p>'}
+ ,{title:'Ejercicio 11 · Frecuencia de un armónico',block:'Bloque extra · Armónicos',prompt:'La frecuencia fundamental de un sonido es 150 Hz. Calcula la frecuencia del cuarto armónico.',formula:'fₙ = n · f₀',given:'Datos: n = 4; f₀ = 150 Hz. Responde en Hz.',unit:'Hz',answer:600,tolerance:0.1,steps:'<p><b>1. Identificar los valores:</b> n = 4 y f₀ = 150 Hz.</p><p><b>2. Sustituir:</b> fₙ = n · f₀ = 4 · 150.</p><p><b>3. Calcular:</b> f₄ = 600 Hz.</p><p><b>Resultado:</b> 600 Hz.</p>'}
+ ,{title:'Ejercicio 12 · Ancho de banda',block:'Bloque extra · Bandas de frecuencia',prompt:'Una banda tiene una frecuencia superior de 10 000 Hz y una inferior de 200 Hz. Calcula su ancho de banda.',formula:'BW = fₛ − fᵢ',given:'Datos: fₛ = 10 000 Hz; fᵢ = 200 Hz. Responde en Hz.',unit:'Hz',answer:9800,tolerance:1,steps:'<p><b>1. Fórmula:</b> BW = fₛ − fᵢ.</p><p><b>2. Sustituir:</b> BW = 10 000 − 200.</p><p><b>3. Calcular:</b> BW = 9 800 Hz.</p><p><b>Resultado:</b> 9 800 Hz.</p>'}
+ ,{title:'Ejercicio 13 · Frecuencia central',block:'Bloque extra · Bandas de frecuencia',prompt:'Una banda tiene fₛ = 8 000 Hz y fᵢ = 500 Hz. Calcula su frecuencia central.',formula:'f꜀ = √(fₛ · fᵢ)',given:'Datos: fₛ = 8 000 Hz; fᵢ = 500 Hz. Responde en Hz.',unit:'Hz',answer:2000,tolerance:1,steps:'<p><b>1. Fórmula:</b> f꜀ = √(fₛ · fᵢ).</p><p><b>2. Multiplicar:</b> 8 000 · 500 = 4 000 000.</p><p><b>3. Calcular la raíz:</b> √4 000 000 = 2 000.</p><p><b>Resultado:</b> f꜀ = 2 000 Hz.</p>'}
+ ,{title:'Ejercicio 14 · Banda de octava',block:'Bloque extra · Bandas de frecuencia',prompt:'La frecuencia inferior de una banda de octava es 500 Hz. Calcula la frecuencia superior.',formula:'fₛ = 2 · fᵢ',given:'Dato: fᵢ = 500 Hz. Responde en Hz.',unit:'Hz',answer:1000,tolerance:0.5,steps:'<p><b>1. Relación de una octava:</b> fₛ = 2 · fᵢ.</p><p><b>2. Sustituir:</b> fₛ = 2 · 500.</p><p><b>Resultado:</b> fₛ = 1 000 Hz.</p>'}
+ ,{title:'Ejercicio 15 · Banda de tercio de octava',block:'Bloque extra · Bandas de frecuencia',prompt:'La frecuencia inferior de una banda de tercio de octava es 1 000 Hz. Calcula la frecuencia superior aproximada.',formula:'fₛ = fᵢ · 2^(1/3)',given:'Dato: fᵢ = 1 000 Hz. Responde en Hz; se acepta redondeo.',unit:'Hz',answer:1259.921,tolerance:3,steps:'<p><b>1. Fórmula:</b> fₛ = fᵢ · 2^(1/3).</p><p><b>2. Sustituir:</b> fₛ = 1 000 · 2^(1/3).</p><p><b>3. Calcular:</b> 2^(1/3) ≈ 1,2599.</p><p><b>Resultado:</b> fₛ ≈ 1 259,9 Hz, aproximadamente 1 260 Hz.</p>'}
+ ,{title:'Ejercicio 16 · Longitud de onda',block:'Bloque extra · Propagación del sonido',prompt:'Un sonido se propaga a 343 m/s y tiene una frecuencia de 1 000 Hz. Calcula su longitud de onda.',formula:'λ = c / f',given:'Datos: c = 343 m/s; f = 1 000 Hz. Responde en metros (m).',unit:'m',answer:0.343,tolerance:0.003,steps:'<p><b>1. Fórmula:</b> λ = c/f.</p><p><b>2. Sustituir:</b> λ = 343/1 000.</p><p><b>3. Calcular:</b> λ = 0,343 m.</p><p><b>Resultado:</b> 0,343 m (34,3 cm).</p>'}
+ ,{title:'Ejercicio 17 · Velocidad y temperatura',block:'Bloque extra · Propagación del sonido',prompt:'Calcula la velocidad aproximada del sonido en el aire a 20 °C usando la fórmula lineal de las diapositivas.',formula:'c = 331,4 + 0,6 · T',given:'Dato: T = 20 °C. Responde en m/s.',unit:'m/s',answer:343.4,tolerance:0.2,steps:'<p><b>1. Fórmula lineal del tema:</b> c = 331,4 + 0,6 · T.</p><p><b>2. Sustituir T = 20:</b> c = 331,4 + 0,6 · 20.</p><p><b>3. Calcular:</b> 0,6 · 20 = 12; c = 331,4 + 12 = 343,4 m/s.</p><p><b>Resultado:</b> 343,4 m/s.</p><p><b>Nota:</b> se usa la fórmula lineal que aparece en las diapositivas. En el mismo material hay una posible errata en el valor c₀ de la expresión con raíz; conviene confirmarlo con el profesor.</p>'}
+ ,{title:'Ejercicio 18 · Recorrido total del eco',block:'Bloque extra · Eco',prompt:'Una pared está a 12,5 m del punto de emisión. Calcula la distancia total recorrida por el sonido al ir hasta la pared y volver.',formula:'e = 2 · d',given:'Dato: d = 12,5 m. Responde en metros.',unit:'m',answer:25,tolerance:0.2,steps:'<p><b>1. Entender el recorrido:</b> el sonido va hasta la pared y regresa, así que recorre dos veces la distancia d.</p><p><b>2. Aplicar:</b> e = 2 · d = 2 · 12,5.</p><p><b>Resultado:</b> e = 25 m.</p>'}
+ ,{title:'Ejercicio 19 · Velocidad a partir de espacio y tiempo',block:'Bloque extra · Propagación del sonido',prompt:'El sonido recorre 34,3 m en 0,1 s. Calcula la velocidad de propagación.',formula:'c = e / t',given:'Datos: e = 34,3 m; t = 0,1 s. Responde en m/s.',unit:'m/s',answer:343,tolerance:1,steps:'<p><b>1. Fórmula:</b> c = e/t.</p><p><b>2. Sustituir:</b> c = 34,3/0,1.</p><p><b>3. Calcular:</b> c = 343 m/s.</p><p><b>Resultado:</b> 343 m/s.</p>'}
+ ,{title:'Ejercicio 20 · Nivel de intensidad sonora (SIL)',block:'Bloque extra · Niveles acústicos',prompt:'La intensidad sonora medida es I = 1 · 10⁻⁸ W/m² y la referencia del ejercicio es I₀ = 1 · 10⁻¹² W/m². Calcula SIL.',formula:'SIL = 10 · log₁₀(I / I₀)',given:'Datos: I = 10⁻⁸ W/m²; I₀ = 10⁻¹² W/m². Responde en dB.',unit:'dB',answer:40,tolerance:0.2,steps:'<p><b>1. Fórmula:</b> SIL = 10 · log₁₀(I/I₀).</p><p><b>2. Sustituir:</b> SIL = 10 · log₁₀(10⁻⁸/10⁻¹²).</p><p><b>3. Simplificar la división:</b> 10⁻⁸/10⁻¹² = 10⁴.</p><p><b>4. Calcular:</b> SIL = 10 · log₁₀(10⁴) = 10 · 4 = 40 dB.</p><p><b>Resultado:</b> 40 dB.</p>'}
+ ,{title:'Ejercicio 21 · Intensidad a partir de SIL',block:'Bloque extra · Despeje inverso de SIL',prompt:'Un sonido tiene SIL = 50 dB. Si I₀ = 1 · 10⁻¹² W/m², calcula su intensidad sonora I.',formula:'I = I₀ · 10^(SIL/10)',given:'Datos: SIL = 50 dB; I₀ = 10⁻¹² W/m². Responde en W/m².',unit:'W/m²',answer:1e-7,tolerance:1e-9,steps:'<p><b>1. Fórmula inversa:</b> I = I₀ · 10^(SIL/10).</p><p><b>2. Sustituir:</b> I = 10⁻¹² · 10^(50/10) = 10⁻¹² · 10⁵.</p><p><b>3. Sumar exponentes:</b> 10⁻¹² · 10⁵ = 10⁻⁷.</p><p><b>Resultado:</b> I = 1 · 10⁻⁷ W/m².</p>'}
+ ,{title:'Ejercicio 22 · Suma de dos fuentes no coherentes',block:'Bloque extra · Suma de niveles acústicos',prompt:'Dos fuentes sonoras no coherentes tienen cada una un nivel de 60 dB. Calcula el nivel total.',formula:'Ltotal = 10 · log₁₀(10^(L₁/10) + 10^(L₂/10))',given:'Datos: L₁ = 60 dB; L₂ = 60 dB. Responde en dB.',unit:'dB',answer:63.0103,tolerance:0.3,steps:'<p><b>1. Fórmula para dos fuentes no coherentes:</b> Ltotal = 10 · log₁₀(10^(L₁/10) + 10^(L₂/10)).</p><p><b>2. Sustituir:</b> Ltotal = 10 · log₁₀(10⁶ + 10⁶) = 10 · log₁₀(2 · 10⁶).</p><p><b>3. Calcular:</b> Ltotal ≈ 63,01 dB.</p><p><b>Resultado:</b> aproximadamente 63 dB. No se suman directamente 60 + 60.</p>'}
+ ,{title:'Ejercicio 23 · Varias fuentes iguales',block:'Bloque extra · Suma de niveles acústicos',prompt:'Ocho fuentes no coherentes, iguales y a la misma distancia producen 65 dB cada una. Calcula el nivel total.',formula:'Ltotal = 10 · log₁₀(N) + Lp',given:'Datos: N = 8; Lp = 65 dB. Responde en dB.',unit:'dB',answer:74.0309,tolerance:0.3,steps:'<p><b>1. Fórmula:</b> Ltotal = 10 · log₁₀(N) + Lp.</p><p><b>2. Sustituir:</b> Ltotal = 10 · log₁₀(8) + 65.</p><p><b>3. Calcular:</b> 10 · log₁₀(8) ≈ 9,03 dB; Ltotal ≈ 74,03 dB.</p><p><b>Resultado:</b> aproximadamente 74 dB.</p>'}
+ ,{title:'Ejercicio 24 · Balance de energía acústica',block:'Bloque extra · Propagación del sonido',prompt:'Una onda tiene 120 unidades de energía incidente. Se reflejan 30 y se absorben 25. Calcula la energía transmitida.',formula:'Ei = Er + Ea + Et',given:'Datos: Ei = 120; Er = 30; Ea = 25. Todas las energías están en la misma unidad.',unit:'unidades',answer:65,tolerance:0.1,steps:'<p><b>1. Fórmula de balance:</b> Ei = Er + Ea + Et.</p><p><b>2. Despejar Et:</b> Et = Ei − Er − Ea.</p><p><b>3. Sustituir:</b> Et = 120 − 30 − 25 = 65.</p><p><b>Resultado:</b> 65 unidades de energía.</p><p><b>Importante:</b> las diapositivas no fijan una unidad concreta para este balance; por eso se usan unidades arbitrarias iguales para todos los términos.</p>'}
+ ,{title:'Ejercicio 25 · Sensibilidad de un micrófono',block:'Bloque extra · Micrófonos',prompt:'La sensibilidad de un micrófono es 20 mV/Pa. Exprésala en decibelios usando como referencia 1 V/Pa, según la diapositiva.',formula:'S(dB) = 20 · log₁₀(S / (1 V/Pa))',given:'Dato: S = 20 mV/Pa. Convierte primero a V/Pa. Responde en dB.',unit:'dB',answer:-33.9794,tolerance:0.5,steps:'<p><b>1. Convertir la sensibilidad:</b> 20 mV/Pa = 0,020 V/Pa.</p><p><b>2. Sustituir:</b> S(dB) = 20 · log₁₀(0,020/1).</p><p><b>3. Calcular:</b> 20 · log₁₀(0,020) ≈ −33,98 dB.</p><p><b>Resultado:</b> aproximadamente −34 dB respecto a 1 V/Pa.</p><p><b>Importante:</b> la sensibilidad S y la referencia deben estar expresadas en las mismas unidades antes de hacer el cociente.</p>'}
+
+ ,{title:'Ejercicio 26 · Sensibilidad del micrófono (5 mV/Pa)',block:'Prioridad de examen · Micrófonos',prompt:'La sensibilidad de un micrófono es 5 mV/Pa. Exprésala en decibelios con referencia de 1 V/Pa.',formula:'S(dB) = 20 · log₁₀(S / (1 V/Pa))',given:'Dato: S = 5 mV/Pa. Convierte a V/Pa antes de calcular. Responde en dB.',unit:'dB',answer:-46.0206,tolerance:0.5,steps:'<p><b>1. Convertir a V/Pa:</b> 5 mV/Pa = 0,005 V/Pa.</p><p><b>2. Sustituir:</b> S(dB) = 20 · log₁₀(0,005/1).</p><p><b>3. Calcular:</b> 20 · log₁₀(0,005) ≈ −46,02 dB.</p><p><b>Resultado:</b> aproximadamente −46,0 dB respecto a 1 V/Pa.</p><p><b>Recuerda:</b> convierte primero los mV a V.</p>'}
+ ,{title:'Ejercicio 27 · Sensibilidad del micrófono (25 mV/Pa)',block:'Prioridad de examen · Micrófonos',prompt:'Un micrófono presenta una sensibilidad de 25 mV/Pa. Calcula su sensibilidad en decibelios respecto a 1 V/Pa.',formula:'S(dB) = 20 · log₁₀(S / (1 V/Pa))',given:'Dato: S = 25 mV/Pa. Responde en dB.',unit:'dB',answer:-32.0412,tolerance:0.5,steps:'<p><b>1. Conversión:</b> 25 mV/Pa = 0,025 V/Pa.</p><p><b>2. Sustituir:</b> S(dB) = 20 · log₁₀(0,025/1).</p><p><b>3. Calcular:</b> 20 · log₁₀(0,025) ≈ −32,04 dB.</p><p><b>Resultado:</b> aproximadamente −32,0 dB respecto a 1 V/Pa.</p>'}
+ ,{title:'Ejercicio 28 · Sensibilidad del micrófono (1 mV/Pa)',block:'Prioridad de examen · Micrófonos',prompt:'La ficha de un micrófono indica una sensibilidad de 1 mV/Pa. Exprésala en decibelios respecto a 1 V/Pa.',formula:'S(dB) = 20 · log₁₀(S / (1 V/Pa))',given:'Dato: S = 1 mV/Pa. Primero convierte a V/Pa. Responde en dB.',unit:'dB',answer:-60,tolerance:0.2,steps:'<p><b>1. Convertir:</b> 1 mV/Pa = 0,001 V/Pa.</p><p><b>2. Sustituir:</b> S(dB) = 20 · log₁₀(0,001/1).</p><p><b>3. Calcular:</b> log₁₀(0,001) = −3; 20 · (−3) = −60 dB.</p><p><b>Resultado:</b> −60 dB respecto a 1 V/Pa.</p>'}
+
+
+];
+// Para cada ejercicio se define la fórmula correcta. Los ID se refieren al formulario general:
+// direct-N = fórmula directa en el orden de las diapositivas; inv-* = despeje inverso.
+const exerciseFormulaTargets = [
+ 'direct-6','direct-6','inv-w','inv-w','direct-8','direct-8','inv-p','inv-p',
+ 'direct-0','inv-t','direct-1','direct-2','direct-3','direct-4','direct-5',
+ 'direct-13','direct-12','direct-16','direct-15','direct-7','inv-i','direct-9','direct-10','direct-14','direct-17',
+ 'direct-17','direct-17','direct-17'
+];
+let exIndex=0, exScore=0, exAttempts=0, exAnswered=false, exRevealed=false;
+let exFormulaScore=0, exFormulaAttempts=0, exFormulaAttemptLogged=false, exFormulaSolved=false, exFormulaRevealed=false;
+let exCurrentFormulaOptions=[];
+function getExerciseFormulaChoices(targetId){
+ const matchingQuestion=formulaChoiceQuestions.find(q=>q.answer===targetId && q.options && q.options.includes(targetId));
+ let ids=matchingQuestion?matchingQuestion.options.slice():[];
+ ids=ids.filter((id,i,all)=>all.indexOf(id)===i && formulaById(id));
+ if(!ids.includes(targetId))ids.push(targetId);
+ if(ids.length<4){
+  const distractors=shuffle(formulaLibrary.map(f=>f.id).filter(id=>id!==targetId && !ids.includes(id)));
+  ids=ids.concat(distractors.slice(0,4-ids.length));
+ }
+ return shuffle(ids.slice(0,4).map(formulaById).filter(Boolean));
+}
+function renderExerciseFormulaChoices(){
+ const targetId=exerciseFormulaTargets[exIndex];
+ exCurrentFormulaOptions=getExerciseFormulaChoices(targetId);
+ const container=$('exercise-formula-options');container.innerHTML='';
+ exCurrentFormulaOptions.forEach((formula,i)=>{
+  const b=document.createElement('button');b.type='button';b.className='option';
+  b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${formula.f}</span>`;
+  b.addEventListener('click',()=>answerExerciseFormula(formula.id,b));container.appendChild(b);
+ });
+}
+function answerExerciseFormula(chosenId,chosenButton){
+ if(exFormulaSolved || exFormulaRevealed)return;
+ if(!exFormulaAttemptLogged){exFormulaAttempts++;exFormulaAttemptLogged=true;}
+ const targetId=exerciseFormulaTargets[exIndex];
+ if(chosenId===targetId){
+  if(exFormulaTries===0)exFormulaScore++;
+  exFormulaSolved=true;
+  Array.from($('exercise-formula-options').children).forEach(b=>{b.disabled=true;if(b===chosenButton)b.classList.add('correct')});
+  $('exercise-formula-feedback').innerHTML='<div class="feedback good"><strong>¡Correcto! Has elegido la fórmula adecuada.</strong><p>Ahora se desbloquea el cálculo numérico.</p></div>';
+  showExerciseCalculation(false);
+ }else{
+  exFormulaTries++;
+  chosenButton.disabled=true;chosenButton.classList.add('wrong');
+  $('exercise-formula-feedback').innerHTML='<div class="feedback bad"><strong>Esta no es la fórmula adecuada.</strong><p>Vuelve a mirar qué magnitud te dan y cuál te piden. Puedes probar con otra opción; todavía no hagas operaciones.</p></div>';
+ }
+}
+let exFormulaTries=0;
+function showExerciseCalculation(fromReveal){
+ const e=soundExercises[exIndex];
+ $('exercise-formula-stage').hidden=true;$('exercise-calc-stage').hidden=false;
+ $('exercise-formula').textContent=e.formula;
+ $('exercise-given').textContent=e.given;
+ $('exercise-unit').textContent=e.unit;
+ $('exercise-calc-message').innerHTML=fromReveal
+  ? '<div class="feedback neutral"><strong>Fórmula mostrada.</strong><p>Puedes intentar el cálculo igualmente. La elección de fórmula no contará como acierto.</p></div>'
+  : '<div class="feedback good"><strong>Fórmula correcta.</strong><p>Ahora realiza las operaciones y escribe solo el resultado numérico.</p></div>';
+ const inp=$('exercise-answer');inp.value='';inp.hidden=false;inp.disabled=false;
+ $('exercise-feedback').innerHTML='';$('exercise-steps').hidden=true;$('exercise-steps').innerHTML='';
+ $('exercise-check').hidden=false;$('exercise-reveal').hidden=false;$('exercise-check').disabled=false;$('exercise-reveal').disabled=false;
+ $('exercise-next').hidden=false;$('exercise-next').disabled=true;$('exercise-next').textContent=exIndex===soundExercises.length-1?'Ver resultados':'Siguiente →';
+ $('exercise-restart').hidden=true;
+}
+function renderSoundExercise(){
+ const heading=$('exercise-heading'), prompt=$('exercise-prompt'), inp=$('exercise-answer');
+ if(exIndex>=soundExercises.length){
+  $('exercise-formula-stage').hidden=true;$('exercise-calc-stage').hidden=false;
+  heading.textContent='¡Has terminado los ejercicios!';$('exercise-block').textContent='Resumen de resultados';$('exercise-count').textContent='Completado';$('exercise-progress').style.width='100%';
+  prompt.textContent=`Has completado los ${soundExercises.length} ejercicios. Aquí tienes el resumen de cómo te ha ido.`;
+  $('exercise-formula').textContent='Bloque completado';$('exercise-given').textContent='Puedes repetir el bloque para mejorar la elección de fórmula y los cálculos.';$('exercise-unit').textContent='';inp.hidden=true;
+  $('exercise-calc-message').innerHTML='';
+  $('exercise-feedback').innerHTML=`<div class="feedback ${exAttempts&&exScore/exAttempts>=.75?'good':'neutral'}"><strong>Elección de fórmula: ${exFormulaScore}/${exFormulaAttempts}</strong><p>Aciertos a la primera al elegir la fórmula.</p><strong>Cálculo numérico: ${exScore}/${exAttempts}</strong><p>${exAttempts?Math.round(exScore/exAttempts*100)+' % de aciertos en resultados.':'Todavía no has comprobado ningún resultado.'}</p></div>`;
+  $('exercise-steps').hidden=true;$('exercise-check').hidden=true;$('exercise-reveal').hidden=true;$('exercise-next').hidden=true;$('exercise-restart').hidden=false;return;
+ }
+ const e=soundExercises[exIndex]; exAnswered=false; exRevealed=false;exFormulaTries=0;exFormulaSolved=false;exFormulaRevealed=false;exFormulaAttemptLogged=false;
+ heading.textContent=e.title;$('exercise-block').textContent=e.block;$('exercise-count').textContent=`Ejercicio ${exIndex+1} / ${soundExercises.length}`;$('exercise-progress').style.width=`${100*(exIndex+1)/soundExercises.length}%`;prompt.textContent=e.prompt;
+ $('exercise-formula-stage').hidden=false;$('exercise-calc-stage').hidden=true;
+ $('exercise-formula-feedback').innerHTML='';$('exercise-formula-hint-box').hidden=true;$('exercise-formula-hint-box').innerHTML='';
+ $('exercise-formula-hint').disabled=false;$('exercise-formula-reveal').disabled=false;
+ renderExerciseFormulaChoices();
+ $('exercise-formula-hint').onclick=()=>{
+  const target=formulaById(exerciseFormulaTargets[exIndex]);const box=$('exercise-formula-hint-box');
+  box.innerHTML=`<strong>Pista (${target.group}):</strong> ${target.clue}`;box.hidden=false;
+ };
+ $('exercise-formula-reveal').onclick=()=>{
+  if(exFormulaSolved||exFormulaRevealed)return;
+  if(!exFormulaAttemptLogged){exFormulaAttempts++;exFormulaAttemptLogged=true;}
+  exFormulaRevealed=true;
+  Array.from($('exercise-formula-options').children).forEach((b)=>{b.disabled=true;if(b.querySelector('span:last-child')?.textContent===formulaById(exerciseFormulaTargets[exIndex]).f)b.classList.add('correct')});
+  $('exercise-formula-feedback').innerHTML=`<div class="feedback neutral"><strong>La fórmula correcta es ${formulaById(exerciseFormulaTargets[exIndex]).name}.</strong><p>La elección no cuenta como acierto; puedes continuar con el cálculo para practicarlo.</p></div>`;
+  showExerciseCalculation(true);
+ };
+ $('exercise-formula').textContent=e.formula;$('exercise-given').textContent=e.given;$('exercise-unit').textContent=e.unit;inp.value='';inp.hidden=false;inp.disabled=false;
+ $('exercise-feedback').innerHTML='';$('exercise-steps').hidden=true;$('exercise-steps').innerHTML='';$('exercise-check').hidden=false;$('exercise-reveal').hidden=false;$('exercise-next').hidden=false;$('exercise-restart').hidden=true;
+}
+function formatExerciseAnswer(value){if(value!==0 && (Math.abs(value)<0.001 || Math.abs(value)>=1e7))return value.toExponential(3).replace('.',',');return new Intl.NumberFormat('es-ES',{maximumFractionDigits:4}).format(value);}
+function checkSoundExercise(){if(exAnswered||exIndex>=soundExercises.length||$('exercise-calc-stage').hidden)return;const e=soundExercises[exIndex];const raw=$('exercise-answer').value.trim().replace(/\s/g,'').replace(',','.');const value=Number(raw);if(!raw||!Number.isFinite(value)){$('exercise-feedback').innerHTML='<div class="feedback neutral"><strong>Escribe un resultado numérico.</strong><p>No hace falta escribir la unidad en el campo: ya aparece al lado.</p></div>';return;}exAnswered=true;exAttempts++;const diff=Math.abs(value-e.answer);const ok=diff<=e.tolerance||diff/Math.max(Math.abs(e.answer),1e-12)<=0.01;if(ok)exScore++;$('exercise-answer').disabled=true;$('exercise-check').disabled=true;$('exercise-reveal').disabled=false;$('exercise-next').disabled=false;$('exercise-feedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><strong>${ok?'¡Correcto!':'Casi. Revisa el resultado.'}</strong><p>Resultado esperado: <b>${formatExerciseAnswer(e.answer)} ${e.unit}</b>.</p><p>${ok?'Se acepta tu respuesta por el redondeo.':'Puedes consultar la resolución paso a paso antes de avanzar.'}</p></div>`;}
+function revealSoundExercise(){if(exIndex>=soundExercises.length||$('exercise-calc-stage').hidden)return;const e=soundExercises[exIndex];exRevealed=true;exAnswered=true;$('exercise-answer').disabled=true;$('exercise-check').disabled=true;$('exercise-reveal').disabled=true;$('exercise-next').disabled=false;$('exercise-steps').innerHTML='<h3>Resolución paso a paso</h3>'+e.steps;$('exercise-steps').hidden=false;if(!$('exercise-feedback').innerHTML)$('exercise-feedback').innerHTML='<div class="feedback neutral"><strong>Solución consultada</strong><p>Este ejercicio no suma ni resta puntos porque has visto la solución.</p></div>';}
+$('exercise-check').addEventListener('click',checkSoundExercise);$('exercise-reveal').addEventListener('click',revealSoundExercise);$('exercise-next').addEventListener('click',()=>{if(exIndex<soundExercises.length){exIndex++;renderSoundExercise()}});$('exercise-restart').addEventListener('click',()=>{exIndex=0;exScore=0;exAttempts=0;exFormulaScore=0;exFormulaAttempts=0;renderSoundExercise()});
+
+// El tema se inicializa mediante un script independiente justo después de la cabecera,
+// para que el selector siga funcionando aunque otro módulo de estudio falle.
+
+// Módulo interactivo de micrófonos, basado en las diapositivas 12–20.
+const micTypes = [
+{id:'dinamico',name:'Dinámico (bobina móvil)',emoji:'🧲',family:'Electromagnético / electrodinámico',simple:'La onda mueve una bobina dentro del campo de un imán. Ese movimiento genera una tensión eléctrica.',steps:[['〰️','Llega el sonido','La presión acústica hace vibrar el diafragma.'],['🎙️','Se mueve la bobina','El diafragma mueve la bobina unida a él.'],['🧲','Actúa el imán','La bobina se mueve en el campo magnético y se induce tensión.'],['⚡','Sale la señal','La tensión eléctrica representa el sonido captado.']],analogy:'Como una dinamo en miniatura: el movimiento dentro de un campo magnético produce electricidad.',features:'Impedancia indicada en el tema: 150–600 Ω; sensibilidad baja (1–5 mV/Pa); respuesta en frecuencia aceptable; económico y resistente.',power:'No necesita alimentación.',uses:'Conciertos y situaciones donde interesa un micrófono resistente.',care:'No necesita alimentación fantasma según las diapositivas.',remember:'Bobina móvil + imán = dinámico.'},
+{id:'cinta',name:'De cinta',emoji:'〰️',family:'Electromagnético / electrodinámico',simple:'Una cinta de aluminio situada entre los polos de un imán vibra con el sonido y genera una tensión.',steps:[['〰️','Llega el sonido','La onda sonora hace vibrar la membrana de cinta.'],['🥈','Se mueve la cinta','La cinta de aluminio está entre los polos de un imán.'],['🧲','Se induce tensión','El movimiento dentro del campo magnético genera tensión.'],['⚡','Sale la señal','La señal eléctrica corresponde al sonido captado.']],analogy:'Piensa en una tira metálica muy fina que vibra en un campo magnético.',features:'Poca sensibilidad y baja impedancia; necesita un transformador de adaptación para obtener una impedancia de salida de 200 Ω; el tema lo describe como costoso y poco utilizado.',power:'Las diapositivas advierten que conectar alimentación fantasma puede estropear algunos micrófonos de cinta; comprueba las especificaciones del modelo.',uses:'El material no concreta aplicaciones específicas; destaca que son costosos y se usan poco.',care:'Comprueba la alimentación antes de conectarlo.',remember:'Cinta de aluminio + imán = micrófono de cinta.'},
+{id:'condensador',name:'De condensador',emoji:'▥',family:'Electrostático',simple:'Tiene dos placas que forman un condensador. El sonido mueve una placa y cambia la capacidad eléctrica; el circuito transforma ese cambio en señal.',steps:[['〰️','Llega el sonido','La presión sonora hace vibrar la membrana.'],['▤','Cambia la distancia','Una placa se mueve respecto a la placa fija.'],['⚙️','Cambia la capacidad','La capacidad depende de la distancia entre las placas.'],['🔋','Circuito y señal','La variación produce una señal; necesita alimentación externa.']],analogy:'Como dos placas muy próximas: al variar la separación, cambia una propiedad eléctrica que el circuito convierte en señal.',features:'Sensibilidad alta (20–30 mV/Pa), respuesta en frecuencia muy plana y buena relación señal/ruido. Las diapositivas lo describen como delicado y costoso.',power:'Necesita alimentación externa; el tema cita 9 V y 48 V de alimentación fantasma.',uses:'Estudios de grabación.',care:'Recuerda que necesita alimentación y que el tema lo describe como delicado.',remember:'Placas de condensador cuya distancia varía = condensador.'},
+{id:'electret',name:'Electret',emoji:'🔋',family:'Electrostático',simple:'Es parecido al de condensador, pero la placa fija está hecha de un polímero permanentemente polarizado. Necesita alimentar el preamplificador.',steps:[['〰️','Llega el sonido','La membrana vibra al recibir la onda.'],['▤','Varía la separación','La parte móvil cambia respecto al elemento fijo.'],['⚡','Elemento polarizado','Una placa de polímero está permanentemente polarizada.'],['🔋','Preamplificador','Necesita alimentación para el preamplificador.']],analogy:'Pertenece a la familia del condensador, pero el material mantiene la polarización; el circuito necesita alimentar el preamplificador.',features:'Según el tema, tiene menor sensibilidad que el de condensador y una respuesta muy pobre en bajas frecuencias.',power:'Requiere alimentación para el preamplificador.',uses:'Micrófonos de solapa para TV, grabadoras portátiles, teléfonos móviles y captación cercana de instrumentos.',care:'Recuerda la placa fija de polímero permanentemente polarizado.',remember:'Polímero permanentemente polarizado + alimentación del preamplificador = electret.'},
+{id:'piezo',name:'Piezoeléctrico (cristal o cerámico)',emoji:'💎',family:'Piezoeléctrico',simple:'La presión de la onda deforma un material piezoeléctrico, como el cuarzo, y esa deformación genera una tensión.',steps:[['〰️','Llega el sonido','La onda ejerce presión sobre el elemento.'],['💎','Se deforma el cristal','El material piezoeléctrico cambia de forma ligeramente.'],['⚡','Aparece tensión','La deformación genera una tensión eléctrica.'],['🔌','Se adapta la salida','El tema indica que tiene alta impedancia de salida y necesita adaptación.']],analogy:'Como un cristal que, al apretarlo o deformarlo, genera una señal eléctrica.',features:'El tema indica buena respuesta en frecuencia, ausencia de ruidos y bajo coste; tiene alta impedancia de salida.',power:'La diapositiva no especifica una necesidad de alimentación general para esta familia.',uses:'El material cita micrófonos cerámicos o de cristal.',care:'Necesita un transformador para adaptar la impedancia, según el tema.',remember:'Deformación de cristal/material piezoeléctrico = tensión.'},
+{id:'carbon',name:'De carbón (resistencia variable)',emoji:'⚫',family:'Resistencia variable',simple:'La membrana comprime o libera partículas de carbón. Eso cambia la resistencia eléctrica y produce variaciones de señal.',steps:[['〰️','Llega el sonido','La onda mueve la membrana.'],['⚫','Se comprime el carbón','Las partículas varían su presión de contacto.'],['↕️','Cambia la resistencia','La compresión modifica la resistencia eléctrica.'],['⚡','Varía la señal','Los cambios eléctricos siguen las vibraciones del sonido.']],analogy:'Como un contacto eléctrico cuya resistencia cambia cuando se aprietan las partículas que tiene dentro.',features:'Respuesta en frecuencia muy pobre, según las diapositivas.',power:'Necesita alimentación eléctrica.',uses:'Teléfonos analógicos y porteros automáticos.',care:'Asócialo a la variación de resistencia, no a una bobina, placas o un cristal.',remember:'Partículas de carbón comprimidas → cambia la resistencia.'}
+];
+const micVideos = {
+  dinamico: [
+    {id:'lRdo_Y6vqIQ',start:30,title:'Cómo funciona un micrófono dinámico',channel:'Productor Sbrocco',lang:'Español',desc:'Empieza aproximadamente en 0:30. Complementa los pasos de la explicación: el diafragma mueve la bobina dentro del campo magnético y se genera tensión.'}
+  ],
+  cinta: [
+    {id:'RIbp15zlLjo',start:0,title:'Eikon RM8 Ribbon: micrófono de cinta',channel:'Doble Bobina',lang:'Español',desc:'Demostración y descripción de un micrófono de cinta. Fíjate en la presentación del tipo y en la parte técnica; también podrás escuchar una muestra.'},
+    {id:'S-6uFydUH-A',start:0,title:'Ribbon Microphones Explained: How They Work & When to Use',channel:'Sonic Electronix',lang:'Inglés',desc:'Explica la cinta conductora de aluminio entre imanes, la pequeña tensión que genera y sus cuidados. Es más técnico y está en inglés.'}
+  ],
+  condensador: [
+    {id:'lRdo_Y6vqIQ',start:93,title:'Cómo funciona un micrófono de condensador',channel:'Productor Sbrocco',lang:'Español',desc:'Empieza aproximadamente en 1:33. Relaciona la membrana móvil y la placa fija con el cambio de capacidad; el vídeo también compara condensador y dinámico.'}
+  ],
+  electret: [
+    {id:'5ik7kx7LGKQ',start:0,title:'Electret Microphone — Operation Principle',channel:'ChipDipvideo',lang:'Inglés',desc:'Animación del principio de funcionamiento: carga permanente, membrana móvil y preamplificador. El vídeo está en inglés; puedes activar subtítulos automáticos si están disponibles.'},
+    {id:'O5Sek-hhyT0',start:0,title:'Fabricación de un micrófono electret',channel:'Martín Donato',lang:'Español',desc:'Demostración práctica de una cápsula electret y su circuito adaptador. Es un poco más técnico, pero ayuda a ver el componente real.'}
+  ],
+  piezo: [
+    {id:'pxsI_U4kINA',start:0,title:'Cómo funciona un micrófono de contacto: sensor piezoeléctrico',channel:'Denkyō Audio',lang:'Español · vídeo corto',desc:'Vídeo breve sobre un micrófono de contacto piezoeléctrico. Relaciónalo con la idea clave del tema: la deformación del material genera una tensión eléctrica.'}
+  ],
+  carbon: [
+    {id:null,title:'Vídeos sobre el micrófono de carbón',channel:'Búsqueda de YouTube',lang:'Búsqueda de vídeos',url:'https://www.youtube.com/results?search_query=micr%C3%B3fono+de+carb%C3%B3n+funcionamiento+principio',desc:'No he podido verificar un vídeo explicativo específico que encaje bien con este apartado. En los resultados, busca una demostración donde la membrana comprima los gránulos de carbón y se vea que cambia la resistencia eléctrica.'}
+  ]
+};
+
+const micQuestions = [
+{q:'¿Qué tipo usa una bobina móvil dentro del campo de un imán permanente?',o:['Dinámico','De cinta','De condensador','De carbón'],a:0,why:'El dinámico genera una tensión inducida en una bobina que se mueve sobre un imán permanente.'},
+{q:'¿En cuál vibra una cinta de aluminio situada entre los polos de un imán?',o:['Electret','De cinta','Piezoeléctrico','De carbón'],a:1,why:'Es la descripción de las diapositivas para el micrófono de cinta.'},
+{q:'¿Qué tipo cambia la capacidad porque varía la distancia entre dos placas?',o:['Dinámico','De carbón','De condensador','Piezoeléctrico'],a:2,why:'El micrófono de condensador usa dos placas; la capacidad varía con su separación.'},
+{q:'¿Qué tipo tiene una placa fija hecha de un polímero permanentemente polarizado?',o:['Electret','De cinta','Dinámico','De carbón'],a:0,why:'Es la característica distintiva del electret indicada en la diapositiva.'},
+{q:'¿Qué tipo genera tensión cuando se deforma un material como el cuarzo?',o:['De condensador','Piezoeléctrico','Dinámico','De carbón'],a:1,why:'El fenómeno piezoeléctrico genera tensión a partir de la deformación del material.'},
+{q:'¿Qué tipo funciona comprimiendo partículas de carbón y cambiando su resistencia?',o:['De cinta','Electret','De carbón','De condensador'],a:2,why:'La membrana comprime las partículas de carbón y modifica la resistencia eléctrica.'},
+{q:'Según las diapositivas, ¿qué tipo tiene sensibilidad baja, es resistente y no necesita alimentación?',o:['Dinámico','De condensador','Electret','De cinta'],a:0,why:'El tema indica que los dinámicos son resistentes, tienen baja sensibilidad y no necesitan alimentación.'},
+{q:'¿Qué tipo se destaca por su sensibilidad alta y respuesta plana, y se utiliza en estudios de grabación?',o:['De carbón','De condensador','Dinámico','De cinta'],a:1,why:'La diapositiva del condensador destaca alta sensibilidad, respuesta plana y uso en estudios.'},
+{q:'¿Qué tipo se menciona para micrófonos de solapa de TV y grabadoras portátiles?',o:['Piezoeléctrico','De cinta','Electret','De carbón'],a:2,why:'Es uno de los usos indicados para el electret.'},
+{q:'¿Qué patrón capta el sonido de forma uniforme en todas las direcciones?',o:['Bidireccional','Omnidireccional','Cardioide','Supercardioide'],a:1,why:'Omnidireccional capta de manera uniforme alrededor del micrófono.'},
+{q:'¿Qué directividad es más sensible por delante y por detrás y menos por los laterales?',o:['Omnidireccional','Unidireccional','Bidireccional','Cardioide'],a:2,why:'La bidireccional tiene dos zonas de mayor sensibilidad opuestas y menor sensibilidad lateral.'},
+{q:'¿Qué tipo de transductor aparece asociado a teléfonos analógicos y porteros automáticos?',o:['De carbón','De condensador','Piezoeléctrico','Dinámico'],a:0,why:'La diapositiva del micrófono de carbón indica esos usos.'}
+];
+let micSelected=0,micQuizIndex=0,micQuizScore=0,micQuizAttempts=0,micQuizAnswered=false,micQuizOrder=[];
+function renderMicTypeButtons(){const target=$('mic-type-buttons');target.innerHTML='';micTypes.forEach((m,i)=>{const b=document.createElement('button');b.className='mic-pick'+(i===micSelected?' active':'');b.innerHTML=`<span class="mic-emoji">${m.emoji}</span>${m.name}`;b.setAttribute('aria-pressed',i===micSelected?'true':'false');b.onclick=()=>{micSelected=i;renderMicTypeButtons();renderMicType()};target.appendChild(b)});}
+function renderMicType(){
+  const m=micTypes[micSelected];
+  const vids=micVideos[m.id]||[];
+  const videosHtml=`<div class="mic-video-section"><div class="row"><div><h3>🎬 Vídeos que apoyan esta explicación</h3><p class="muted small">Puedes reproducirlos aquí o abrirlos en YouTube. Los vídeos necesitan conexión a internet.</p></div><span class="tag">${vids.length} recurso${vids.length===1?'':'s'}</span></div><div class="mic-video-grid">${vids.map((v,i)=>`<article class="mic-video-card"><span class="tag">${v.lang}</span><h4>${v.title}</h4><p class="muted">${v.desc}</p>${v.id?`<div class="mic-video-preview" id="mic-video-preview-${i}"><img loading="lazy" src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="Miniatura del vídeo: ${v.title}"><button type="button" class="mic-video-play" onclick="loadMicVideo(${i})">▶ Reproducir aquí</button></div><a class="mic-video-link" href="https://www.youtube.com/watch?v=${v.id}${v.start?'&t='+v.start+'s':''}" target="_blank" rel="noopener noreferrer">Abrir en YouTube ↗</a>`:`<a class="btn" href="${v.url}" target="_blank" rel="noopener noreferrer">Buscar vídeos en YouTube ↗</a>`}</article>`).join('')}</div><div class="mic-video-note"><strong>Cómo aprovecharlos:</strong> mira el vídeo después de leer los pasos. Intenta identificar la pieza física que vibra y qué fenómeno produce la señal eléctrica.</div></div>`;
+  $('mic-type-content').innerHTML=`<span class="tag">${m.family}</span><h3 style="font-size:1.45rem;margin-top:10px">${m.emoji} ${m.name}</h3><p>${m.simple}</p><h3 style="margin-top:18px">Así funciona, paso a paso</h3><div class="mic-process">${m.steps.map((s,i)=>`<div class="mic-step"><span class="step-icon">${s[0]}</span><strong>${i+1}. ${s[1]}</strong><small>${s[2]}</small></div>`).join('')}</div><div class="mic-tip"><strong>Una forma fácil de imaginarlo:</strong> ${m.analogy}</div><div class="mic-columns"><div class="mic-info"><h4>Características</h4><p>${m.features}</p></div><div class="mic-info"><h4>Alimentación</h4><p>${m.power}</p></div><div class="mic-info"><h4>Usos y cuidado</h4><p>${m.uses}<br><br><strong>Recuerda:</strong> ${m.care}</p></div></div><div class="definition"><h3>Regla para el examen</h3><strong>${m.remember}</strong></div>${videosHtml}`;
+}
+function loadMicVideo(videoIndex){
+  const m=micTypes[micSelected];
+  const v=(micVideos[m.id]||[])[videoIndex];
+  if(!v||!v.id)return;
+  const preview=$('mic-video-preview-'+videoIndex);
+  if(!preview)return;
+  const iframe=document.createElement('iframe');
+  iframe.src=`https://www.youtube-nocookie.com/embed/${v.id}?start=${v.start||0}&rel=0`;
+  iframe.title=v.title;
+  iframe.loading='lazy';
+  iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  iframe.referrerPolicy='strict-origin-when-cross-origin';
+  iframe.allowFullscreen=true;
+  preview.innerHTML='';
+  preview.appendChild(iframe);
+}
+function renderMicQuiz(){if(micQuizIndex>=micQuestions.length){finishMicQuiz();return;}micQuizAnswered=false;const item=micQuestions[micQuizOrder[micQuizIndex]??micQuizIndex];$('mic-quiz-count').textContent=`Pregunta ${micQuizIndex+1} / ${micQuestions.length}`;$('mic-quiz-progress').style.width=`${100*(micQuizIndex+1)/micQuestions.length}%`;$('mic-quiz-question').textContent=item.q;$('mic-quiz-feedback').innerHTML='';$('mic-quiz-options').innerHTML='';$('mic-quiz-next').disabled=true;$('mic-quiz-next').hidden=false;$('mic-quiz-reveal').disabled=false;$('mic-quiz-reveal').hidden=false;$('mic-quiz-restart').hidden=true;const options=shuffle(item.o.map((text,i)=>({text,correct:i===item.a})));options.forEach((o,i)=>{const b=document.createElement('button');b.className='mic-quiz-option';b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${o.text}</span>`;b.onclick=()=>answerMicQuiz(i,options,item);$('mic-quiz-options').appendChild(b)});}
+function answerMicQuiz(chosen,options,item){if(micQuizAnswered)return;micQuizAnswered=true;micQuizAttempts++;const correctIndex=options.findIndex(o=>o.correct);const ok=chosen===correctIndex;if(ok)micQuizScore++;Array.from($('mic-quiz-options').children).forEach((b,i)=>{b.disabled=true;if(i===correctIndex)b.classList.add('correct');else if(i===chosen)b.classList.add('wrong')});$('mic-quiz-feedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><strong>${ok?'¡Correcto!':'Repasa esta explicación.'}</strong><p>${item.why}</p></div>`;$('mic-quiz-next').disabled=false;$('mic-quiz-reveal').disabled=true;}
+function revealMicQuiz(){if(micQuizAnswered)return;micQuizAnswered=true;const item=micQuestions[micQuizOrder[micQuizIndex]??micQuizIndex];const options=shuffle(item.o.map((text,i)=>({text,correct:i===item.a})));$('mic-quiz-options').innerHTML='';options.forEach((o,i)=>{const b=document.createElement('button');b.className='mic-quiz-option'+(o.correct?' correct':'');b.disabled=true;b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${o.text}</span>`;$('mic-quiz-options').appendChild(b)});$('mic-quiz-feedback').innerHTML=`<div class="feedback neutral"><strong>Solución: ${item.o[item.a]}</strong><p>${item.why}</p><p>Has consultado la solución; esta pregunta no cuenta como respondida.</p></div>`;$('mic-quiz-next').disabled=false;$('mic-quiz-reveal').disabled=true;}
+function finishMicQuiz(){$('mic-quiz-count').textContent='Finalizado';$('mic-quiz-progress').style.width='100%';$('mic-quiz-question').textContent='¡Has terminado el test!';$('mic-quiz-options').innerHTML=`<div class="stats"><div class="stat"><strong>${micQuizScore}/${micQuizAttempts}</strong><span>Aciertos contestados</span></div><div class="stat"><strong>${micQuizAttempts?Math.round(100*micQuizScore/micQuizAttempts):0}%</strong><span>Porcentaje</span></div><div class="stat"><strong>${micQuestions.length}</strong><span>Preguntas totales</span></div></div><p>${micQuizAttempts&&micQuizScore/micQuizAttempts>=.85?'¡Muy bien! Has entendido las diferencias principales.':'Vuelve a elegir los tipos de micrófono, repasa el funcionamiento paso a paso y haz de nuevo el test.'}</p>`;$('mic-quiz-feedback').innerHTML='';$('mic-quiz-next').hidden=true;$('mic-quiz-reveal').hidden=true;$('mic-quiz-restart').hidden=false;}
+$('mic-quiz-next').addEventListener('click',()=>{if(micQuizIndex<micQuestions.length){micQuizIndex++;renderMicQuiz()}});
+$('mic-quiz-reveal').addEventListener('click',revealMicQuiz);
+$('mic-quiz-restart').addEventListener('click',()=>{micQuizIndex=0;micQuizScore=0;micQuizAttempts=0;micQuizOrder=shuffle(micQuestions.map((_,i)=>i));$('mic-quiz-next').hidden=false;$('mic-quiz-reveal').hidden=false;renderMicQuiz()});
+renderMicTypeButtons();renderMicType();micQuizOrder=shuffle(micQuestions.map((_,i)=>i));renderMicQuiz();
+
+initOrder();buildLearn();buildFormulaCatalog();pickOrder=shuffle(formulaChoiceQuestions.map((_,i)=>i));renderFormulaPick();buildUnitTable();renderPractice();renderUnits();renderExam();renderSoundExercise();
+</script></body></html>
